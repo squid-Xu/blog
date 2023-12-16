@@ -4,6 +4,9 @@
   "description": "博客网站",
   "main": "index.js",
   "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/squid-Xu/blog/issues"
   },
-  "homepage": "https://github.com/squid-Xu/blog#readme"
+  "homepage": "https://github.com/squid-Xu/blog#readme",
+  "devDependencies": {
+    "vitepress": "^1.0.0-rc.31",
+    "vue": "^3.3.11"
+  }
 }
