@@ -1,5 +1,5 @@
 module.exports = {
-    base: "/blog/", // 这里为仓库名
+    // base: "/blog/", // 这里为仓库名
     title: "麻辣鱿鱼徐",
     description: "Front end project and tips sharing",
     themeConfig: {
