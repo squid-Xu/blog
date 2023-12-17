@@ -1,4 +1,5 @@
 ---
+title: 麻辣鱿鱼徐
 layout: home
 
 hero:
@@ -15,6 +16,17 @@ hero:
         - theme: alt
           text: 在 Gitee 上查看
           link: https://github.com/squid-Xu/blog
+
+features:
+    - icon: ⚡️
+      title: 知识点分享
+      details: 前端八股，踩坑小贴士
+    - icon: 🖖
+      title: 算法分享
+      details: 用JS攻克leetode题库
+    - icon: 🛠️
+      title: 项目分享
+      details: 开源简单的前端技术DEMO
 ---
 
 <style>
