@@ -70,16 +70,10 @@ module.exports = {
             pattern: "https://github.com/squid-Xu/blog/edit/main/docs/:path",
             text: "于GitHub中编辑这一段内容",
         },
+        // 设置所有aside的标题
+        outlineTitle: "本页目录",
+        // 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部
+        lastUpdated: true, // string | boolean
         lastUpdatedText: "最后更新", // string
     },
-    // aside，设定为false将关闭右侧栏，文档内容会填充剩余空白部分
-    aside: true,
-    // outline设置为deep可以解析2-6层深度的标题嵌套
-    outline: "deep",
-    // 暂时没发现这个属性有啥用
-    outlineBadges: true,
-    // 设置所有aside的标题
-    outlineTitle: "本页目录",
-    // 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部
-    lastUpdated: true, // string | boolean
 }
