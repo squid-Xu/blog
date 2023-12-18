@@ -70,6 +70,7 @@ module.exports = {
             pattern: "https://github.com/squid-Xu/blog/edit/main/docs/:path",
             text: "于GitHub中编辑这一段内容",
         },
+        lastUpdatedText: "最后更新", // string
     },
     // aside，设定为false将关闭右侧栏，文档内容会填充剩余空白部分
     aside: true,
@@ -81,8 +82,4 @@ module.exports = {
     outlineTitle: "本页目录",
     // 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部
     lastUpdated: true, // string | boolean
-    // 主题配置
-    themeConfig: {
-        lastUpdatedText: "最后更新", // string
-    }
 }
