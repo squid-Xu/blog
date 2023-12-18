@@ -56,9 +56,14 @@ module.exports = {
             message: 'Released under the MIT License.',
             copyright: 'Copyright © 2020-present squid-Xu'
         },
-        // 添加搜索框
+        // 添加搜索框 https://xiaoyi1255.github.io/guide/project/algolia
         search: {
-            provider: 'local'
+            provider: 'algolia',
+            options: {
+                appId: '...',
+                apiKey: '...',
+                indexName: '...'
+            }
         },
         // 定义文章底部按钮对应的文本标题
         docFooter: {
