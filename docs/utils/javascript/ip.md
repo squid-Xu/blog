@@ -66,4 +66,12 @@
 </script>
 ```
 
-#### 例子地址：[https://squid-xu.github.io/static/example/ip/%E8%8E%B7%E5%8F%96IP%E5%9C%B0%E5%9D%80.html](https://squid-xu.github.io/static/example/ip/%E8%8E%B7%E5%8F%96IP%E5%9C%B0%E5%9D%80.html)
+***
+### 运行结果
+
+![alt 属性文本](https://squid-xu.github.io/static/picture/2024/01/1704813007.png)
+
+***
+
+### 例子地址：
+[https://squid-xu.github.io/static/example/utils/ip.html](https://squid-xu.github.io/static/example/utils/ip.html)
