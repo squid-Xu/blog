@@ -1,4 +1,4 @@
-### 前端获取用户 ip 地址
+## 前端获取用户 ip 地址
 
 ```js
 <script>
@@ -66,12 +66,14 @@
 </script>
 ```
 
-***
-### 运行结果
+---
+
+## 运行结果
 
 ![alt 属性文本](https://squid-xu.github.io/static/picture/2024/01/1704813007.png)
 
-***
+---
 
-### 例子地址：
+## 例子地址
+
 [https://squid-xu.github.io/static/example/utils/ip.html](https://squid-xu.github.io/static/example/utils/ip.html)

@@ -29,9 +29,9 @@ features:
       details: 开源简单的前端技术DEMO
 ---
 
-<style>
+<!-- <style>
 :root {
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff);
 }
-</style>
+</style> -->

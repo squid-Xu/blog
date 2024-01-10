@@ -30,7 +30,7 @@ module.exports = {
 				text: '工具类',
 				items: [
 					{ text: 'CSS动画库', link: '/utils/css/' },
-					{ text: 'JavaScript实用工具类', link: '/utils/javascript/' },
+					{ text: 'JavaScript实用工具类', link: '/utils/javascript/browser' },
 				],
 			},
 			{
@@ -63,7 +63,7 @@ module.exports = {
 					text: '浏览器相关',
 					collapsed: false, // collapsed设置默认是否收缩，true为默认收缩
 					items: [
-						{ text: '获取浏览器版本', link: '/utils/javascript/' },
+						{ text: '获取浏览器版本', link: '/utils/javascript/browser' },
 						{ text: '浏览器获取IP地址', link: '/utils/javascript/ip' },
 					],
 				}
