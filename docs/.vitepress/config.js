@@ -24,22 +24,22 @@ module.exports = {
 					{ text: '其他', link: '/web/other/vitepress/index' },
 				],
 			},
-			{ text: '算法', link: '/leetcode/LEET_CODE题解/47. 全排列 II' }, //这种是没有下拉菜单的版本
-			{ text: '项目案例', link: '/intent/' },
+			// { text: '算法', link: '/leetcode/LEET_CODE题解/47. 全排列 II' }, //这种是没有下拉菜单的版本
+			{ text: '项目案例', link: '/intent/full-page' },
 			{
 				text: '工具类',
 				items: [
-					{ text: 'CSS动画库', link: '/utils/css/' },
+					// { text: 'CSS动画库', link: '/utils/css/' },
 					{ text: 'JavaScript实用工具类', link: '/utils/javascript/browser' },
 				],
 			},
-			{
-				text: '总结',
-				items: [
-					{ text: '2023', link: '/summarize/2023/' },
-					{ text: '2024', link: '/summarize/2024/' },
-				],
-			},
+			// {
+			// 	text: '总结',
+			// 	items: [
+			// 		{ text: '2023', link: '/summarize/2023/' },
+			// 		{ text: '2024', link: '/summarize/2024/' },
+			// 	],
+			// },
 		],
 		// 定义侧边栏
 		sidebar: {
@@ -58,6 +58,9 @@ module.exports = {
 					items: [{ text: '卸载指南', link: '/starter/starter-uninstall' }],
 				},
 			],
+			'/intent/': [
+				{ text: '全屏滚动', link: '/intent/full-page' },
+			],
 			'/utils/javascript/': [
 				{
 					text: '浏览器相关',
@@ -66,7 +69,7 @@ module.exports = {
 						{ text: '获取浏览器版本', link: '/utils/javascript/browser' },
 						{ text: '浏览器获取IP地址', link: '/utils/javascript/ip' },
 					],
-				}
+				},
 			],
 		},
 		// 最右侧的友情链接小图标
