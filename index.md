@@ -3,23 +3,25 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+    name: 麻辣鱿鱼徐
+    text:
+    tagline: 没啥特点仅供学习
+    actions:
+        - theme: brand
+          text: 开始
+          link: /guide/
+        - theme: alt
+          text: 在 Gitee 上查看
+          link: https://github.com/squid-Xu/blog
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    - icon: ⚡️
+      title: 知识点分享
+      details: 前端八股，踩坑小贴士
+    - icon: 🖖
+      title: 面试总结
+      details: 刷一些常见面试题进行总结
+    - icon: 🛠️
+      title: 案例分享
+      details: 开源简单的前端技术DEMO
 ---
-
