@@ -9,7 +9,7 @@ hero:
     actions:
         - theme: brand
           text: 开始
-          link: /guide/
+          link: /javascript/
         - theme: alt
           text: 在 Gitee 上查看
           link: https://github.com/squid-Xu/blog

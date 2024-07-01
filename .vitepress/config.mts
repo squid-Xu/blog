@@ -9,13 +9,37 @@ export default defineConfig({
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
 			{
-				text: '介绍一下吧',
-				link: '/guide/',
+				text: 'JavaScript',
+				link: '/javascript/',
 			},
 			{
-				text: '生活',
-				link: '/live/',
+				text: 'HTML',
+				link: '/html/',
 			},
+			{
+				text: 'CSS',
+				link: '/css/',
+			},
+			{
+				text: 'Vue2',
+				link: '/vue2/',
+			},
+			{
+				text: 'Vue3',
+				link: '/vue3/',
+			},
+			{
+				text: 'React',
+				link: '/react/',
+			},
+			{
+				text: '小程序',
+				link: '/wechat/',
+			},
+			// {
+			// 	text: '生活',
+			// 	link: '/live/',
+			// },
 		],
 
 		sidebar: {
