@@ -43,6 +43,13 @@ export default defineConfig({
 		],
 
 		sidebar: {
+			'/javascript/': [
+				{
+					text: '总结',
+					collapsed: false,
+					items: [{ text: 'for...in和for...of的区别', link: '/javascript/summary/for...in和for...of的区别' }],
+				},
+			],
 			'/live/house/': [
 				// {
 				// 	text: '买房历程',
