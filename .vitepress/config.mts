@@ -36,6 +36,10 @@ export default defineConfig({
 				text: '小程序',
 				link: '/wechat/',
 			},
+			{
+				text: '总结',
+				link: '/summary/',
+			},
 			// {
 			// 	text: '生活',
 			// 	link: '/live/',
@@ -47,7 +51,7 @@ export default defineConfig({
 				{
 					text: '总结',
 					collapsed: false,
-					items: [{ text: 'for...in和for...of的区别', link: '/javascript/summary/for...in和for...of的区别' }],
+					items: [{ text: 'for...in和for...of的区别', link: '/javascript/summary/No1' }],
 				},
 			],
 			'/live/house/': [

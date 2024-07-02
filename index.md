@@ -11,7 +11,7 @@ hero:
           text: 开始
           link: /javascript/
         - theme: alt
-          text: 在 Github 上查看
+          text: 在 GitHub 上查看
           link: https://github.com/squid-Xu/blog
 
 features:

@@ -7,15 +7,18 @@
 	</head>
 	<body>
 		<script>
-			let obj = { name: 'zhangsan', age: 18 };
+			let map = new Map([
+				['a', 1],
+				['b', 2],
+				['c', 3],
+			]);
 
-			for (let key in obj) {
-				console.log(key);
-				console.log(obj[key]);
+			for (let key in map) {
+				console.log(key); //无输出
 			}
 
-			for (let value of obj) {
-				console.log(value);
+			for (let key of map) {
+				console.log(key); //输出 ['a', 1], ['b', 2], ['c', 3]
 			}
 		</script>
 	</body>
