@@ -12,18 +12,18 @@ export default defineConfig({
 				text: 'JavaScript',
 				link: '/javascript/',
 			},
-			{
-				text: 'HTML',
-				link: '/html/',
-			},
-			{
-				text: 'CSS',
-				link: '/css/',
-			},
-			{
-				text: 'Vue2',
-				link: '/vue2/',
-			},
+			// {
+			// 	text: 'HTML',
+			// 	link: '/html/',
+			// },
+			// {
+			// 	text: 'CSS',
+			// 	link: '/css/',
+			// },
+			// {
+			// 	text: 'Vue2',
+			// 	link: '/vue2/',
+			// },
 			{
 				text: 'Vue3',
 				link: '/vue3/',
@@ -47,13 +47,13 @@ export default defineConfig({
 		],
 		// 定义侧边栏
 		sidebar: {
-			'/javascript/': [
-				{
-					text: '总结',
-					collapsed: false,
-					items: [{ text: 'for...in和for...of的区别', link: '/javascript/summary/No1' }],
-				},
-			],
+			// '/javascript/': [
+			// 	{
+			// 		text: '总结',
+			// 		collapsed: false,
+			// 		items: [{ text: 'for...in和for...of的区别', link: '/javascript/summary/No1' }],
+			// 	},
+			// ],
 			'/live/house/': [
 				// {
 				// 	text: '买房历程',

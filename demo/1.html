@@ -6,20 +6,36 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<input type="text" id="input" />
 		<script>
-			let map = new Map([
-				['a', 1],
-				['b', 2],
-				['c', 3],
-			]);
+			//节流
+			const throttle = (fn, delay = 1000) => {
+				// 定时器
+				let timer = null;
+				// 将throttle处理结果当作函数返回
+				return function () {
+					// 如果等到了delay才能执行并清空定时器
+					if (!timer) {
+						// 设立新定时器
+						timer = setTimeout(() => {
+							timer = null; //因为在 setTimeout 中是无法删除定时器的，因为定时器还在运作，所以使用timer = null
+							fn.apply(this, arguments);
+						}, delay);
+					}
+				};
+			};
 
-			for (let key in map) {
-				console.log(key); //无输出
+			/* input事件触发执行的逻辑 */
+			function trigger(e) {
+				console.log(e.target.value);
 			}
+			const inputDom = document.getElementById('input');
 
-			for (let key of map) {
-				console.log(key); //输出 ['a', 1], ['b', 2], ['c', 3]
-			}
+			//不加节流
+			inputDom.addEventListener('input', trigger);
+
+			// 加节流
+			inputDom.addEventListener('input', throttle(trigger));
 		</script>
 	</body>
 </html>
