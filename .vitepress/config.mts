@@ -24,14 +24,14 @@ export default defineConfig({
 			// 	text: 'Vue2',
 			// 	link: '/vue2/',
 			// },
-			{
-				text: 'Vue3',
-				link: '/vue3/',
-			},
-			{
-				text: 'React',
-				link: '/react/',
-			},
+			// {
+			// 	text: 'Vue3',
+			// 	link: '/vue3/',
+			// },
+			// {
+			// 	text: 'React',
+			// 	link: '/react/',
+			// },
 			{
 				text: '小程序',
 				link: '/wechat/',
