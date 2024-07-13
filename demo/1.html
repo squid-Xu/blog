@@ -4,38 +4,30 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.main {
+				/* overflow: hidden; */
+				/* display: flex; */
+			}
+			.box {
+				width: 200px;
+				height: 200px;
+				margin: 20px 0;
+				background-color: aqua;
+				border: solid 1px red;
+			}
+		</style>
 	</head>
 	<body>
-		<input type="text" id="input" />
-		<script>
-			//节流
-			const throttle = (fn, delay = 1000) => {
-				// 定时器
-				let timer = null;
-				// 将throttle处理结果当作函数返回
-				return function () {
-					// 如果等到了delay才能执行并清空定时器
-					if (!timer) {
-						// 设立新定时器
-						timer = setTimeout(() => {
-							timer = null; //因为在 setTimeout 中是无法删除定时器的，因为定时器还在运作，所以使用timer = null
-							fn.apply(this, arguments);
-						}, delay);
-					}
-				};
-			};
-
-			/* input事件触发执行的逻辑 */
-			function trigger(e) {
-				console.log(e.target.value);
-			}
-			const inputDom = document.getElementById('input');
-
-			//不加节流
-			inputDom.addEventListener('input', trigger);
-
-			// 加节流
-			inputDom.addEventListener('input', throttle(trigger));
-		</script>
+		<div class="main">
+			<div class="box"></div>
+		</div>
+		<div class="main">
+			<div class="box"></div>
+		</div>
 	</body>
 </html>
