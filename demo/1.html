@@ -4,30 +4,68 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
-		<style>
-			* {
-				margin: 0;
-				padding: 0;
-			}
-			.main {
-				/* overflow: hidden; */
-				/* display: flex; */
-			}
-			.box {
-				width: 200px;
-				height: 200px;
-				margin: 20px 0;
-				background-color: aqua;
-				border: solid 1px red;
-			}
-		</style>
 	</head>
 	<body>
-		<div class="main">
-			<div class="box"></div>
-		</div>
-		<div class="main">
-			<div class="box"></div>
-		</div>
+		<script>
+			//没有返回值
+			function Person(name, age) {
+				this.name = name;
+				this.age = age;
+			}
+			Person.prototype.say = function () {
+				console.log(this.name, this.age);
+			};
+			const p1 = new Person('张三', 20);
+			console.log(p1); //Person {name: '张三', age: 20}
+			console.log(p1.name); //张三
+			console.log(p1.age); //20
+			console.log(p1.say()); //张三 20
+
+			//返回一个对象
+			function Person2(name) {
+				this.name = name;
+				return {
+					age: 12,
+				};
+			}
+
+			const p2 = new Person2('李四');
+
+			console.log(p2); //{age: 12}
+
+			//返回一个非对象
+			function Person3(name) {
+				this.name = name;
+				return 12;
+			}
+
+			const p3 = new Person3('王五');
+
+			console.log(p3); //Person3 {name: '王五'}
+
+			//返回null:
+			function Person4(name) {
+				this.name = name;
+				return null;
+			}
+
+			const p4 = new Person4('小刘');
+
+			console.log(p4); //erson4 {name: '小刘'}
+
+			//模拟new实现
+			function myNew(fn, ...args) {
+				const obj = {};
+				obj.__proto__ = fn.prototype;
+				const result = fn.apply(obj, args);
+				return result instanceof Object ? result : obj;
+			}
+
+			const p5 = myNew(Person, '小七', 30);
+			console.log(p5); //Person {name: '小七', age: 30}
+			console.log(p5.name); //小七
+			console.log(p5.age); //30
+			console.log(p5.say()); //小七 30
+		</script>
 	</body>
 </html>

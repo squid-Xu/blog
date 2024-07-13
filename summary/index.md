@@ -4,3 +4,4 @@
 -   <a href="template/No4">TypeScript 总结</a>
 -   <a href="template/No5">防抖和节流</a>
 -   <a href="template/No6">BFC 是什么，解决了什么问题</a>
+-   <a href="template/No7">清除浮动的方式</a>
