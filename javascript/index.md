@@ -1,3 +1,0 @@
--   <a href="template/No1">for...in 和 for...of 的区别</a>
--   <a href="template/No2">手写实现 call() apply() bind()函数</a>
--   <a href="template/No3">new 的过程</a>

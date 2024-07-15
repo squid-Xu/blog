@@ -47,13 +47,13 @@ export default defineConfig({
 		],
 		// 定义侧边栏
 		sidebar: {
-			// '/javascript/': [
-			// 	{
-			// 		text: '总结',
-			// 		collapsed: false,
-			// 		items: [{ text: 'for...in和for...of的区别', link: '/javascript/summary/No1' }],
-			// 	},
-			// ],
+			'/javascript/': [
+				{
+					text: '基础',
+					collapsed: false,
+					items: [{ text: 'JS简介', link: '/javascript/basics/No1' }],
+				},
+			],
 			'/live/house/': [
 				// {
 				// 	text: '买房历程',
