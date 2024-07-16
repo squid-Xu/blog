@@ -33,6 +33,10 @@ export default defineConfig({
 			// 	link: '/react/',
 			// },
 			{
+				text: 'Promise',
+				link: '/promise/',
+			},
+			{
 				text: '小程序',
 				link: '/wechat/',
 			},
@@ -52,6 +56,19 @@ export default defineConfig({
 					text: '基础',
 					collapsed: false,
 					items: [{ text: 'JS简介', link: '/javascript/basics/No1' }],
+				},
+			],
+			'/promise/': [
+				{
+					text: '基础',
+					collapsed: false,
+					items: [
+						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
+						{ text: 'Promise API', link: '/promise/basics/No2' },
+						{ text: 'Promise 关键问题', link: '/promise/basics/No3' },
+						{ text: 'Promise 自定义封装', link: '/promise/basics/No4' },
+						{ text: 'async 与 await', link: '/promise/basics/No5' },
+					],
 				},
 			],
 			'/live/house/': [
