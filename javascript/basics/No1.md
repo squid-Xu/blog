@@ -40,3 +40,32 @@
 | 1996 年 | 微软发布了和 JavaScript 兼容的 JScript |
 | 1997 年 |     ECMAScript 第一版（ECMA-262）      |
 | 1998 年 |           ECMAScript 第 2 版           |
+
+## 标准
+
+-   ECMAScript 是一个标准，而这个标准需要由各个厂商去实现。
+-   不同的浏览器厂商对该标准会有不同的实现。
+
+| 浏览器            | 内核（渲染引擎） | JS 引擎                     |
+| ----------------- | :--------------: | --------------------------- |
+| FireFox           |      Gecko       | SpiderMonkey                |
+| Internet Explorer |     Trident      | Chakra （ie9 以下 Jscript） |
+| Safari            |      WebKit      | JavaScriptCore              |
+| Chrome            |      Blink       | V8                          |
+
+## 实现
+
+-   我们已经知道 ECMAScript 是 JavaScript 标准，所以一般情况下这两个词我们认为是一个意思。
+
+-   但是实际上 JavaScript 的含义却要更大一些。
+
+-   一个完整的 JavaScript 实现应由一下三部分构成
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.8s372o6kk2.webp)
+
+## 特点
+
+-   解释型语言
+-   类似于 C 和 Java 的语法结构
+-   动态语言
+-   基于原型的面向对象
