@@ -10,7 +10,7 @@ export default defineConfig({
 		nav: [
 			{
 				text: 'JavaScript',
-				link: '/javascript/',
+				link: '/javascript/basics/No1',
 			},
 			// {
 			// 	text: 'HTML',
@@ -34,7 +34,7 @@ export default defineConfig({
 			// },
 			{
 				text: 'Promise',
-				link: '/promise/',
+				link: '/promise/basics/No1',
 			},
 			{
 				text: '小程序',
@@ -61,6 +61,49 @@ export default defineConfig({
 			'/promise/': [
 				{
 					text: '基础',
+					collapsed: false,
+					items: [
+						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
+						{ text: 'Promise 初体验', link: '/promise/basics/No2' },
+						{ text: 'Promise 实践练习-fs读取文件', link: '/promise/basics/No3' },
+						{ text: 'Promise 实践练习-AJAX请求', link: '/promise/basics/No4' },
+					],
+				},
+				{
+					text: 'Promise API',
+					collapsed: false,
+					items: [
+						{ text: 'Promise 状态是什么', link: '/promise/api/No1' },
+						{ text: 'Promise 的基本流程', link: '/promise/api/No2' },
+						{ text: '如何使用Promise', link: '/promise/api/No3' },
+						{ text: 'Promise 自定义封装', link: '/promise/api/No4' },
+						{ text: 'async 与 await', link: '/promise/api/No5' },
+					],
+				},
+				{
+					text: 'Promise 关键问题',
+					collapsed: false,
+					items: [
+						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
+						{ text: 'Promise API', link: '/promise/basics/No2' },
+						{ text: 'Promise 关键问题', link: '/promise/basics/No3' },
+						{ text: 'Promise 自定义封装', link: '/promise/basics/No4' },
+						{ text: 'async 与 await', link: '/promise/basics/No5' },
+					],
+				},
+				{
+					text: 'Promise 自定义封装',
+					collapsed: false,
+					items: [
+						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
+						{ text: 'Promise API', link: '/promise/basics/No2' },
+						{ text: 'Promise 关键问题', link: '/promise/basics/No3' },
+						{ text: 'Promise 自定义封装', link: '/promise/basics/No4' },
+						{ text: 'async 与 await', link: '/promise/basics/No5' },
+					],
+				},
+				{
+					text: 'async 与 await',
 					collapsed: false,
 					items: [
 						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
@@ -116,4 +159,7 @@ export default defineConfig({
 		lastUpdatedText: '最后更新', // string
 	},
 	lastUpdated: true, // string | boolean
+	markdown: {
+		lineNumbers: true,
+	},
 });
