@@ -55,7 +55,13 @@ export default defineConfig({
 				{
 					text: '基础',
 					collapsed: false,
-					items: [{ text: 'JS简介', link: '/javascript/basics/No1' }],
+					items: [
+						{ text: 'JS简介', link: '/javascript/basics/No1' },
+						{ text: 'JS语法', link: '/javascript/basics/No2' },
+						{ text: 'JS字面量和变量', link: '/javascript/basics/No3' },
+						{ text: 'JS标识符', link: '/javascript/basics/No4' },
+						{ text: 'JS字符串', link: '/javascript/basics/No5' },
+					],
 				},
 			],
 			'/promise/': [
