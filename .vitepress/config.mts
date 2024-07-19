@@ -4,8 +4,10 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
 	base: '/blog/',
 	title: '麻辣鱿鱼徐',
+	head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
 	description: '麻辣鱿鱼徐 | 个人博客',
 	themeConfig: {
+		logo: '/logo.gif',
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
 			{
@@ -56,11 +58,11 @@ export default defineConfig({
 					text: '基础',
 					collapsed: false,
 					items: [
-						{ text: 'JS简介', link: '/javascript/basics/No1' },
-						{ text: 'JS语法', link: '/javascript/basics/No2' },
-						{ text: 'JS字面量和变量', link: '/javascript/basics/No3' },
-						{ text: 'JS标识符', link: '/javascript/basics/No4' },
-						{ text: 'JS字符串', link: '/javascript/basics/No5' },
+						{ text: '1. 简介', link: '/javascript/basics/No1' },
+						{ text: '2. 语法', link: '/javascript/basics/No2' },
+						{ text: '3. 字面量和变量', link: '/javascript/basics/No3' },
+						{ text: '4. 标识符', link: '/javascript/basics/No4' },
+						{ text: '5. 字符串', link: '/javascript/basics/No5' },
 					],
 				},
 			],
@@ -69,10 +71,10 @@ export default defineConfig({
 					text: '基础',
 					collapsed: false,
 					items: [
-						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
-						{ text: 'Promise 初体验', link: '/promise/basics/No2' },
-						{ text: 'Promise 实践练习-fs读取文件', link: '/promise/basics/No3' },
-						{ text: 'Promise 实践练习-AJAX请求', link: '/promise/basics/No4' },
+						{ text: '1. 介绍与基本使用', link: '/promise/basics/No1' },
+						{ text: '2. 初体验', link: '/promise/basics/No2' },
+						{ text: '3. 实践练习-fs读取文件', link: '/promise/basics/No3' },
+						{ text: '4. 实践练习-AJAX请求', link: '/promise/basics/No4' },
 					],
 				},
 				{
@@ -159,6 +161,7 @@ export default defineConfig({
 			pattern: 'https://github.com/squid-Xu/blog/edit/main/:path',
 			text: '于GitHub中编辑这一段内容',
 		},
+		outline: [2, 4],
 		// 设置所有aside的标题
 		outlineTitle: '目录',
 		// 获取每个文件最后一次 git 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部

@@ -6,6 +6,9 @@ hero:
     name: 麻辣鱿鱼徐
     text:
     tagline: 没啥特点仅供学习
+    image:
+        src: /logo.gif
+        alt: Logo
     actions:
         - theme: brand
           text: 开始

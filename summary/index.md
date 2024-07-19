@@ -8,3 +8,4 @@
 -   <a href="template/No8">for...in 和 for...of 的区别</a>
 -   <a href="template/No9">手写实现 call() apply() bind()函数</a>
 -   <a href="template/No10">new 的过程</a>
+-   <a href="template/No11">给你的 vitepress 添加图片预览功能</a>
