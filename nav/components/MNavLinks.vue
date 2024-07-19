@@ -3,7 +3,6 @@ import MNavLink from './MNavLink.vue';
 import type { NavLink } from '../type';
 
 defineProps<{
-	title: string;
 	items: NavLink[];
 }>();
 </script>
