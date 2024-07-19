@@ -4,10 +4,10 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
 	base: '/blog/',
 	title: '麻辣鱿鱼徐',
-	head: [['link', { rel: 'icon', href: '/blog/logo.gif' }]],
+	head: [['link', { rel: 'icon', href: '/blog/favicon.ico' }]],
 	description: '麻辣鱿鱼徐 | 个人博客',
 	themeConfig: {
-		logo: '/blog/logo.gif',
+		logo: '/logo.gif',
 		// https://vitepress.dev/reference/default-theme-config
 		nav: [
 			{
