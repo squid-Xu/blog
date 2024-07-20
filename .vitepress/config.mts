@@ -12,7 +12,7 @@ export default defineConfig({
 		nav: [
 			{
 				text: '导航',
-				link: '/nav/',
+				link: '/nav/front/No1',
 			},
 			{
 				text: 'JavaScript',
@@ -57,6 +57,21 @@ export default defineConfig({
 		],
 		// 定义侧边栏
 		sidebar: {
+			'/nav/': [
+				{
+					text: '前端导航',
+					collapsed: false,
+					items: [
+						{ text: 'Vue生态', link: '/nav/front/No1' },
+						{ text: 'React生态', link: '/nav/front/No2' },
+					],
+				},
+				{
+					text: '常用工具',
+					collapsed: false,
+					items: [{ text: '开放数据', link: '/nav/tool/No1' }],
+				},
+			],
 			'/javascript/': [
 				{
 					text: '基础',
