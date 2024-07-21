@@ -68,3 +68,93 @@ a = String(a);
 console.log(typeof a); //string
 console.log(a); // "undefined"
 ```
+
+## 将其他的数据类型转换为Number
+
+### 方式一
+
+- 使用 `Number()` 函数
+
+- 字符串 --->  数字
+
+> 1、如果是纯数字的字符串,则直接将其转换为数字
+
+> 2、如果字符中有非数字的内容，则转换为 `NaN`
+
+> 3、如果字符串是一个空串，或者是一个全是空格的字符串，则转换为 `0`
+
+- 布尔  --->  数字
+
+> `true` 转 `1`
+
+> `false` 转 `0`
+
+- null   --->  数字
+
+> `null` 转 `0`
+
+- undefined   --->  数字
+
+> `undefined` 转 `NaN`
+
+```js
+var a = '123';
+Number(a) //123
+
+a = '123px'
+Number(a) //NaN
+
+a = ''
+Number(a) //0
+
+a = '    '
+Number(a) //0
+
+a = true
+Number(a) //1
+
+a = false
+Number(a) //0
+
+a = null
+Number(a) //0
+
+a = undefined
+Number(a) //NaN
+```
+
+
+### 方式二
+
+- 这种方式专门用来对付字符串
+
+- `parseInt()` 把一个字符串转换为一个整数
+
+> `parseInt()` 可以将一个字符串中的有效整数内容取出来，然后转换为 `Number`
+
+- `parseFloat()` 把一个字符串转换为一个浮点数
+
+> `parseFloat()` 作用和 `parseInt()` 类似，不同的是它可以获得有效的小数
+
+
+> [!tip]
+> 如果对非 `String` 使用 `parseInt()` 或 `parseFloat()`，它会先将其转换为 `String`，然后在操作
+
+
+```js
+var a = '123.56px';
+parseInt(a) //123
+parseFloat(a) //123.56
+
+a = 'a123.56px';
+parseInt(a) //NaN
+parseFloat(a) //NaN
+
+a = true;
+parseInt(a) //NaN
+parseFloat(a) //NaN
+
+a = 'true';
+parseInt(a) //NaN
+parseFloat(a) //NaN
+```

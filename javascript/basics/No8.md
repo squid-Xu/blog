@@ -8,6 +8,6 @@
 
 - Undefined（未定义）类型的值只有一个 `undefined`
 
-> 当声明一个变量，但是并不给变量赋值时，它的值就是undefined
+> 当声明一个变量，但是并不给变量赋值时，它的值就是 `undefined`
 
 > `typeof undefined` 返回 `undefined`

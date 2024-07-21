@@ -7,25 +7,24 @@
 	</head>
 	<body>
 		<script>
-			var a = 123;
-			a = String(a);
-			console.log(typeof a); //string
-			console.log(a); // "123"
+			var a = '123.56px';
+			parseInt(a) //123
+			parseFloat(a) //123.56
 
-			var a = true;
-			a = String(a);
-			console.log(typeof a); //string
-			console.log(a); // "true"
+			a = 'a123.56px';
+			parseInt(a) //NaN
+			parseFloat(a) //NaN
 
-			var a = null;
-			a = String(a);
-			console.log(typeof a); //string
-			console.log(a); // "null"
+			a = true;
+			parseInt(a) //NaN
+			parseFloat(a) //NaN
 
-			var a = undefined;
-			a = String(a);
-			console.log(typeof a); //string
-			console.log(a); // "undefined"
+			a = 'true';
+			parseInt(a) //NaN
+			parseFloat(a) //NaN
+
+			console.log(parseInt(a));
+			console.log(parseFloat(a));
 		</script>
 	</body>
 </html>

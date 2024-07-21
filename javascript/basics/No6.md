@@ -1,10 +1,10 @@
 # Number
 
-- 在JS中所有的数值都是Number类型
+- 在JS中所有的数值都是 `Number` 类型
 - 包括整数和浮点数（小数）
 
-- JS中可以表示的数字最大值 `Number.MAX_VALUE`,(最小值`Number.MIN_VALUE`)
-> 如果使用Number表示的数字超过了最大值，则会返回一个`Infinity`,标识正无穷
+- JS中可以表示的数字最大值 `Number.MAX_VALUE`,（最小值`Number.MIN_VALUE`）
+> 如果使用 `Number` 表示的数字超过了最大值，则会返回一个`Infinity`,标识正无穷
 
 > `Infinity`是一个字面量
 
