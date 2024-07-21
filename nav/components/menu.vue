@@ -35,7 +35,6 @@ defineProps<{
 		display: block;
 		border: 1px solid var(--vp-c-bg-soft);
 		border-radius: 8px;
-		height: 100%;
 		text-decoration: inherit;
 		background-color: var(--vp-c-bg-alt);
 		transition: all 0.25s;
