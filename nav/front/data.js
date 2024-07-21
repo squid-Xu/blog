@@ -81,3 +81,12 @@ export const BU_VUE_DATA = [
 		link: 'https://nutui.jd.com/bingo/#/',
 	},
 ];
+
+export const REACT_DATA = [
+	{
+		icon: 'https://zh-hans.react.dev/favicon-32x32.png',
+		title: 'React',
+		desc: '用于构建 Web 和原生交互界面的库',
+		link: 'https://zh-hans.react.dev/',
+	},
+];
