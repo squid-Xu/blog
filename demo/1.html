@@ -7,19 +7,25 @@
 	</head>
 	<body>
 		<script>
-			let p = new Promise((resolve, reject) => {
-				reject('error');
-			});
+			var a = 123;
+			a = String(a);
+			console.log(typeof a); //string
+			console.log(a); // "123"
 
-			//执行then方法，返回失败
-			p.then(
-				value => {
-					console.log(value);
-				},
-				reason => {
-					console.log(reason); //error
-				}
-			);
+			var a = true;
+			a = String(a);
+			console.log(typeof a); //string
+			console.log(a); // "true"
+
+			var a = null;
+			a = String(a);
+			console.log(typeof a); //string
+			console.log(a); // "null"
+
+			var a = undefined;
+			a = String(a);
+			console.log(typeof a); //string
+			console.log(a); // "undefined"
 		</script>
 	</body>
 </html>
