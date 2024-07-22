@@ -4,7 +4,7 @@ import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
 import mediumZoom from 'medium-zoom';
 import CustomLayout from './layouts/CustomLayout.vue';
-import Comment from './components/Comment.vue';
+import Comment from './components/comment.vue';
 import LockedPage from './components/LockedPage.vue';
 
 import './index.css';
