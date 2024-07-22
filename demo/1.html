@@ -7,24 +7,18 @@
 	</head>
 	<body>
 		<script>
-			var a = '123.56px';
-			parseInt(a) //123
-			parseFloat(a) //123.56
+			const p1 = Promise.reject(100);
+			console.log(p1); //Promise {<rejected>: 100}
 
-			a = 'a123.56px';
-			parseInt(a) //NaN
-			parseFloat(a) //NaN
+			const p2 = Promise.reject(new Promise((resolve,reject)=>{
+				resolve(123)
+			}))
+			console.log(p2); //Promise {<rejected>: Promise}
 
-			a = true;
-			parseInt(a) //NaN
-			parseFloat(a) //NaN
-
-			a = 'true';
-			parseInt(a) //NaN
-			parseFloat(a) //NaN
-
-			console.log(parseInt(a));
-			console.log(parseFloat(a));
+			const p3 = Promise.reject(new Promise((resolve,reject)=>{
+				reject(456)
+			}))
+			console.log(p3); //Promise {<rejected>: Promise}
 		</script>
 	</body>
 </html>

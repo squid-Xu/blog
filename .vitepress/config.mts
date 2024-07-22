@@ -50,10 +50,14 @@ export default defineConfig({
 				text: '总结',
 				link: '/summary/',
 			},
-			// {
-			// 	text: '生活',
-			// 	link: '/live/',
-			// },
+			{
+				text: '生活',
+				link: '/live/house/No1',
+			},
+			{
+				text: '工作',
+				link: '/work/No1',
+			},
 		],
 		// 定义侧边栏
 		sidebar: {
@@ -104,57 +108,18 @@ export default defineConfig({
 					text: 'Promise API',
 					collapsed: false,
 					items: [
-						{ text: 'Promise 状态是什么', link: '/promise/api/No1' },
-						{ text: 'Promise 的基本流程', link: '/promise/api/No2' },
-						{ text: '如何使用Promise', link: '/promise/api/No3' },
-						{ text: 'Promise 自定义封装', link: '/promise/api/No4' },
-						{ text: 'async 与 await', link: '/promise/api/No5' },
-					],
-				},
-				{
-					text: 'Promise 关键问题',
-					collapsed: false,
-					items: [
-						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
-						{ text: 'Promise API', link: '/promise/basics/No2' },
-						{ text: 'Promise 关键问题', link: '/promise/basics/No3' },
-						{ text: 'Promise 自定义封装', link: '/promise/basics/No4' },
-						{ text: 'async 与 await', link: '/promise/basics/No5' },
-					],
-				},
-				{
-					text: 'Promise 自定义封装',
-					collapsed: false,
-					items: [
-						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
-						{ text: 'Promise API', link: '/promise/basics/No2' },
-						{ text: 'Promise 关键问题', link: '/promise/basics/No3' },
-						{ text: 'Promise 自定义封装', link: '/promise/basics/No4' },
-						{ text: 'async 与 await', link: '/promise/basics/No5' },
-					],
-				},
-				{
-					text: 'async 与 await',
-					collapsed: false,
-					items: [
-						{ text: 'Promise 介绍与基本使用', link: '/promise/basics/No1' },
-						{ text: 'Promise API', link: '/promise/basics/No2' },
-						{ text: 'Promise 关键问题', link: '/promise/basics/No3' },
-						{ text: 'Promise 自定义封装', link: '/promise/basics/No4' },
-						{ text: 'async 与 await', link: '/promise/basics/No5' },
+						{ text: '1. Promise 状态是什么', link: '/promise/api/No1' },
+						{ text: '2. Promise 的基本流程', link: '/promise/api/No2' },
+						{ text: '3. 如何使用Promise', link: '/promise/api/No3' },
+						{ text: '4. Promise Api 方法', link: '/promise/api/No4' },
 					],
 				},
 			],
-			'/live/house/': [
-				// {
-				// 	text: '买房历程',
-				// 	collapsed: true, // collapsed设置默认是否收缩，true为默认收缩
-				// 	items: [{ text: '心累', link: '/live/house/course' }],
-				// },
+			'/live/': [
 				{
-					text: '进度照片',
+					text: '买房历程',
 					collapsed: false,
-					items: [{ text: '七月', link: '/live/house/picture/july' }],
+					items: [{ text: '七月的第一天', link: '/live/house/No1' }],
 				},
 			],
 		},
