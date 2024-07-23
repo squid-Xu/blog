@@ -158,3 +158,74 @@ a = 'true';
 parseInt(a) //NaN
 parseFloat(a) //NaN
 ```
+
+
+## 将其他的数据类型转换为Boolean
+
+- 使用 `Boolean()` 函数
+
+- 数字 --->  布尔
+
+> 1、 除了 `0` 和 `NaN`，其余的都是 `true`
+
+
+```js
+var a = 123;
+a = Boolean(a); //true
+
+a = -123;
+a = Boolean(a); //true
+
+a = 0;
+a = Boolean(a); //false
+
+a = Infinity;
+a = Boolean(a); //true
+
+a = NaN;
+a = Boolean(a); //false
+```
+
+
+- 字符串 --->  布尔
+
+> 1、 除了空串，其余的都是 `true`
+
+```js
+var a = 'hello';
+a = Boolean(a); //true
+
+var a = 'true';
+a = Boolean(a); //true
+
+var a = 'false';
+a = Boolean(a); //true
+
+var a = '';
+a = Boolean(a); //false
+```
+
+
+- null   --->  布尔
+
+> `null` 转 `false`
+
+```js
+var a = null;
+a = Boolean(a); //false
+```
+
+- undefined   --->  布尔
+
+> `undefined` 转 `false`
+
+
+```js
+var a = undefined;
+a = Boolean(a); //false
+```
+
+- 对象   --->  布尔
+
+> 也会转为 `true`
+

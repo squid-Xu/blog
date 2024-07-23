@@ -90,6 +90,8 @@ export default defineConfig({
 						{ text: '7. 布尔值', link: '/javascript/basics/No7' },
 						{ text: '8. Null和Undefined', link: '/javascript/basics/No8' },
 						{ text: '9. 强制类型转换', link: '/javascript/basics/No9' },
+						{ text: '10. 其他进制的数据', link: '/javascript/basics/No10' },
+						{ text: '11. 算数运算符', link: '/javascript/basics/No11' },
 					],
 				},
 			],
