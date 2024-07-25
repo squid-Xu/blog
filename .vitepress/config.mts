@@ -116,6 +116,15 @@ export default defineConfig({
 						{ text: '4. Promise Api 方法', link: '/promise/api/No4' },
 					],
 				},
+				{
+					text: 'Promise 总结',
+					collapsed: false,
+					items: [
+						{ text: '1. Promise 关键问题', link: '/promise/summary/No1' },
+						{ text: '2. Promise 自定义封装', link: '/promise/summary/No2' },
+						{ text: '3. async 和 await', link: '/promise/summary/No3' },
+					],
+				},
 			],
 			'/live/': [
 				{
