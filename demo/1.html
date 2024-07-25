@@ -6,6 +6,24 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<script></script>
+		<script>
+			let p1 = new Promise((resolve, reject) => {
+				resolve(1);
+			});
+			let p2 = new Promise((resolve, reject) => {
+				resolve(2);
+			});
+			let p3 = Promise.resolve(3);
+			let p4 = Promise.reject(4);
+
+			const result = Promise.race([p1, p2, p3]);
+			console.log(result); //fulfilled  1
+
+			const res = Promise.race([p1, p2, p3, p4]);
+			console.log(res); //fulfilled  1
+
+			const response = Promise.race([p4, p2, p3]);
+			console.log(response); //rejected  4
+		</script>
 	</body>
 </html>
