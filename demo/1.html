@@ -12,7 +12,7 @@
 				this.PromiseState = 'pending';
 				this.PromiseResult = null;
 				//声明属性
-				this.callback = {};
+				this.callbacks = [];
 
 				// resolve函数
 				const resolve = data => {
@@ -23,7 +23,10 @@
 					// 2、设置对象结果值（promiseResult）
 					this.PromiseResult = data;
 					//执行异步成功回调
-					this.callback.onResolved?.(this.PromiseResult);
+					this.callbacks.forEach(v => {
+						v.onResolved?.(this.PromiseResult);
+					});
+					// this.callbacks.onResolved?.(this.PromiseResult);
 				};
 
 				//reject函数
@@ -35,7 +38,10 @@
 					// 2、设置对象结果值（promiseResult）
 					this.PromiseResult = data;
 					//执行异步失败回调
-					this.callback.onRejected?.(this.PromiseResult);
+					this.callbacks.forEach(v => {
+						v.onRejected?.(this.PromiseResult);
+					});
+					// this.callback.onRejected?.(this.PromiseResult);
 				};
 				// 同步调用，【执行器函数】
 				try {
@@ -58,10 +64,10 @@
 				//判断pending状态
 				if (this.PromiseState === 'pending') {
 					// 保存回调函数
-					this.callback = {
+					this.callbacks.push({
 						onResolved,
 						onRejected,
-					};
+					});
 				}
 			};
 
@@ -80,6 +86,16 @@
 					console.log(reason);
 				}
 			);
+			p.then(
+				value => {
+					console.log(value);
+				},
+				reason => {
+					console.log(reason);
+				}
+			);
+
+			console.log(p);
 		</script>
 	</body>
 </html>
