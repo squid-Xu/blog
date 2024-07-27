@@ -909,4 +909,458 @@ myPromise.reject = function (reason) {
 ```
 
 ## all方法封装
+
+
+```js
+// 添加 all 方法
+myPromise.all = function (promises) {
+    // 返回Promise对象
+    return new myPromise((resolve, reject) => {
+        //声明变量
+        let count = 0;
+        let arr = [];
+        //遍历
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(
+                v => {
+                    count++;
+                    arr[i] = v;
+                    //判断
+                    if (count === promises.length) {
+                        //修改状态
+                        resolve(arr);
+                    }
+                },
+                r => {
+                    reject(r);
+                }
+            );
+        }
+    });
+};
+```
 ## race方法封装
+
+```js
+//添加 race 方法
+myPromise.race = function (promises) {
+    // 返回Promise对象
+    return new myPromise((resolve, reject) => {
+        //遍历
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(
+                v => {
+                    resolve(v);
+                },
+                r => {
+                    reject(r);
+                }
+            );
+        }
+    });
+};
+```
+
+## 总结
+
+```js
+function myPromise(executor) {
+    //添加属性
+    this.PromiseState = 'pending';
+    this.PromiseResult = null;
+    //声明属性
+    this.callbacks = [];
+
+    // resolve函数
+    const resolve = data => {
+        // 判断状态
+        if (this.PromiseState !== 'pending') return;
+        // 1、修改对象的状态（promiseState）
+        this.PromiseState = 'fulfilled'; // resolved
+        // 2、设置对象结果值（promiseResult）
+        this.PromiseResult = data;
+        //执行异步成功回调
+        setTimeout(() => {
+            this.callbacks.forEach(v => {
+                v.onResolved?.(this.PromiseResult);
+            });
+        });
+    };
+
+    //reject函数
+    const reject = data => {
+        // 判断状态
+        if (this.PromiseState !== 'pending') return;
+        // 1、修改对象的状态（promiseState）
+        this.PromiseState = 'rejected'; // rejected
+        // 2、设置对象结果值（promiseResult）
+        this.PromiseResult = data;
+        //执行异步失败回调
+        setTimeout(() => {
+            this.callbacks.forEach(v => {
+                v.onRejected?.(this.PromiseResult);
+            });
+        });
+    };
+    // 同步调用，【执行器函数】
+    try {
+        executor(resolve, reject);
+    } catch (error) {
+        // 修改promise对象状态为失败
+        reject(error);
+    }
+}
+
+// 添加then方法
+myPromise.prototype.then = function (onResolved, onRejected) {
+    // 判断回调函数参数
+    if (typeof onResolved !== 'function') {
+        onResolved = value => {
+            return value;
+        };
+    }
+    if (typeof onRejected !== 'function') {
+        onRejected = reason => {
+            throw reason;
+        };
+    }
+    return new myPromise((resolve, reject) => {
+        //封装函数
+        const callback = method => {
+            try {
+                // 获取回调函数的执行结果
+                let result = method(this.PromiseResult);
+                //判断
+                if (result instanceof myPromise) {
+                    result.then(
+                        v => {
+                            resolve(v);
+                        },
+                        r => {
+                            reject(r);
+                        }
+                    );
+                } else {
+                    // 结果的对象状态为成功
+                    resolve(result);
+                }
+            } catch (error) {
+                reject(error);
+            }
+        };
+        //调用回调函数
+        if (this.PromiseState === 'fulfilled') {
+            setTimeout(() => {
+                callback(onResolved);
+            });
+        }
+        if (this.PromiseState === 'rejected') {
+            setTimeout(() => {
+                callback(onRejected);
+            });
+        }
+        //判断pending状态
+        if (this.PromiseState === 'pending') {
+            // 保存回调函数
+            this.callbacks.push({
+                onResolved: () => {
+                    callback(onResolved);
+                },
+                onRejected: () => {
+                    callback(onRejected);
+                },
+            });
+        }
+    });
+};
+
+// 添加catch方法
+myPromise.prototype.catch = function (onRejected) {
+    return this.then(undefined, onRejected);
+};
+
+// 添加 resolve 方法
+myPromise.resolve = function (value) {
+    // 返回Promise对象
+    return new myPromise((resolve, reject) => {
+        try {
+            // 获取回调函数的执行结果
+            //判断
+            if (value instanceof myPromise) {
+                value.then(
+                    v => {
+                        resolve(v);
+                    },
+                    r => {
+                        reject(r);
+                    }
+                );
+            } else {
+                // 结果的对象状态为成功
+                resolve(value);
+            }
+        } catch (error) {
+            reject(error);
+        }
+    });
+};
+
+// 添加 reject 方法
+myPromise.reject = function (reason) {
+    // 返回Promise对象
+    return new myPromise((resolve, reject) => {
+        reject(reason);
+    });
+};
+
+// 添加 all 方法
+myPromise.all = function (promises) {
+    // 返回Promise对象
+    return new myPromise((resolve, reject) => {
+        //声明变量
+        let count = 0;
+        let arr = [];
+        //遍历
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(
+                v => {
+                    count++;
+                    arr[i] = v;
+                    //判断
+                    if (count === promises.length) {
+                        //修改状态
+                        resolve(arr);
+                    }
+                },
+                r => {
+                    reject(r);
+                }
+            );
+        }
+    });
+};
+//添加 race 方法
+myPromise.race = function (promises) {
+    // 返回Promise对象
+    return new myPromise((resolve, reject) => {
+        //遍历
+        for (let i = 0; i < promises.length; i++) {
+            promises[i].then(
+                v => {
+                    resolve(v);
+                },
+                r => {
+                    reject(r);
+                }
+            );
+        }
+    });
+};
+
+let p1 = new myPromise((resolve, reject) => {
+    resolve(1);
+    console.log(2);
+});
+p1.then(value => {
+    console.log(value);
+});
+console.log(3);
+// 2  3  1
+```
+
+## class版本实现
+
+```js
+class myPromise {
+    //构造方法
+    constructor(executor) {
+        //添加属性
+        this.PromiseState = 'pending';
+        this.PromiseResult = null;
+        //声明属性
+        this.callbacks = [];
+
+        // resolve函数
+        const resolve = data => {
+            // 判断状态
+            if (this.PromiseState !== 'pending') return;
+            // 1、修改对象的状态（promiseState）
+            this.PromiseState = 'fulfilled'; // resolved
+            // 2、设置对象结果值（promiseResult）
+            this.PromiseResult = data;
+            //执行异步成功回调
+            setTimeout(() => {
+                this.callbacks.forEach(v => {
+                    v.onResolved?.(this.PromiseResult);
+                });
+            });
+        };
+
+        //reject函数
+        const reject = data => {
+            // 判断状态
+            if (this.PromiseState !== 'pending') return;
+            // 1、修改对象的状态（promiseState）
+            this.PromiseState = 'rejected'; // rejected
+            // 2、设置对象结果值（promiseResult）
+            this.PromiseResult = data;
+            //执行异步失败回调
+            setTimeout(() => {
+                this.callbacks.forEach(v => {
+                    v.onRejected?.(this.PromiseResult);
+                });
+            });
+        };
+        // 同步调用，【执行器函数】
+        try {
+            executor(resolve, reject);
+        } catch (error) {
+            // 修改promise对象状态为失败
+            reject(error);
+        }
+    }
+    // 添加then方法
+    then(onResolved, onRejected) {
+        // 判断回调函数参数
+        if (typeof onResolved !== 'function') {
+            onResolved = value => {
+                return value;
+            };
+        }
+        if (typeof onRejected !== 'function') {
+            onRejected = reason => {
+                throw reason;
+            };
+        }
+        return new myPromise((resolve, reject) => {
+            //封装函数
+            const callback = method => {
+                try {
+                    // 获取回调函数的执行结果
+                    let result = method(this.PromiseResult);
+                    //判断
+                    if (result instanceof myPromise) {
+                        result.then(
+                            v => {
+                                resolve(v);
+                            },
+                            r => {
+                                reject(r);
+                            }
+                        );
+                    } else {
+                        // 结果的对象状态为成功
+                        resolve(result);
+                    }
+                } catch (error) {
+                    reject(error);
+                }
+            };
+            //调用回调函数
+            if (this.PromiseState === 'fulfilled') {
+                setTimeout(() => {
+                    callback(onResolved);
+                });
+            }
+            if (this.PromiseState === 'rejected') {
+                setTimeout(() => {
+                    callback(onRejected);
+                });
+            }
+            //判断pending状态
+            if (this.PromiseState === 'pending') {
+                // 保存回调函数
+                this.callbacks.push({
+                    onResolved: () => {
+                        callback(onResolved);
+                    },
+                    onRejected: () => {
+                        callback(onRejected);
+                    },
+                });
+            }
+        });
+    }
+    // 添加catch方法
+    catch(onRejected) {
+        return this.then(undefined, onRejected);
+    }
+    // 添加 resolve 方法
+    static resolve(value) {
+        // 返回Promise对象
+        return new myPromise((resolve, reject) => {
+            try {
+                // 获取回调函数的执行结果
+                //判断
+                if (value instanceof myPromise) {
+                    value.then(
+                        v => {
+                            resolve(v);
+                        },
+                        r => {
+                            reject(r);
+                        }
+                    );
+                } else {
+                    // 结果的对象状态为成功
+                    resolve(value);
+                }
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+
+    // 添加 reject 方法
+    static reject(reason) {
+        // 返回Promise对象
+        return new myPromise((resolve, reject) => {
+            reject(reason);
+        });
+    }
+
+    // 添加 all 方法
+    static all(promises) {
+        // 返回Promise对象
+        return new myPromise((resolve, reject) => {
+            //声明变量
+            let count = 0;
+            let arr = [];
+            //遍历
+            for (let i = 0; i < promises.length; i++) {
+                promises[i].then(
+                    v => {
+                        count++;
+                        arr[i] = v;
+                        //判断
+                        if (count === promises.length) {
+                            //修改状态
+                            resolve(arr);
+                        }
+                    },
+                    r => {
+                        reject(r);
+                    }
+                );
+            }
+        });
+    }
+    //添加 race 方法
+    static race(promises) {
+        // 返回Promis e对象
+        return new myPromise((resolve, reject) => {
+            //遍历
+            for (let i = 0; i < promises.length; i++) {
+                promises[i].then(
+                    v => {
+                        resolve(v);
+                    },
+                    r => {
+                        reject(r);
+                    }
+                );
+            }
+        });
+    }
+}
+```
