@@ -139,7 +139,7 @@ export default defineConfig({
 		// 底部栏定义的内容
 		footer: {
 			message: 'Released under the MIT License.',
-			copyright: 'Copyright © 2024-present squid-Xu',
+			copyright: 'Copyright © 2024-present squid-Xu <img style="display:inline;transform: translateY(4px);" src="https://visitor-badge.laobi.icu/badge?page_id=squid-Xu.blog" alt="visitors">',
 		},
 		// 添加搜索框 https://xiaoyi1255.github.io/guide/project/algolia
 		search: {
