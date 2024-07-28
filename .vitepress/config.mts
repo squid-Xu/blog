@@ -43,6 +43,10 @@ export default defineConfig({
 				link: '/promise/basics/No1',
 			},
 			{
+				text: 'TypeScript',
+				link: '/typescript/basics/No1',
+			},
+			{
 				text: '小程序',
 				link: '/wechat/',
 			},
@@ -123,6 +127,15 @@ export default defineConfig({
 						{ text: '1. Promise 关键问题', link: '/promise/summary/No1' },
 						{ text: '2. Promise 自定义封装', link: '/promise/summary/No2' },
 						{ text: '3. async 和 await', link: '/promise/summary/No3' },
+					],
+				},
+			],
+			'/typescript/': [
+				{
+					text: '基础',
+					collapsed: false,
+					items: [
+						{ text: '1. TS简介', link: '/typescript/basics/No1' },
 					],
 				},
 			],

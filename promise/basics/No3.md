@@ -1,6 +1,6 @@
 # Promise 实践练习-fs 读取文件
 
-> [!WARNING]
+> [!WARNING] 注意
 > 以下代码需要在 node.js 中运行
 
 ## 原始方法

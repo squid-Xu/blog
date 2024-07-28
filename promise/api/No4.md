@@ -1,10 +1,13 @@
 # Promise Api 方法
 
-## Promise.resolve 方法
+## 一、Promise.resolve 方法
 
 -   `Promise.resolve(value)`
 -   `value`：成功的数据或 Promise 对象
-> 说明：返回一个成功、失败的 Promise 对象
+
+:::tip 说明
+返回一个成功、失败的 Promise 对象
+:::
 
 ```js
 const p1 = Promise.resolve(100);
@@ -27,11 +30,15 @@ const p3 = Promise.resolve(
 console.log(p3); //Promise {<rejected>: 456}
 ```
 
-## Promise.reject 方法
+## 二、Promise.reject 方法
 
 -   `Promise.reject(value)`
 -   `value`：失败的原因
-> 说明：返回一个失败的 Promise 对象
+
+:::tip 说明
+返回一个失败的 Promise 对象
+:::
+
 
 
 ```js
@@ -48,11 +55,14 @@ const p3 = Promise.reject(new Promise((resolve,reject)=>{
 console.log(p3); //Promise {<rejected>: Promise}
 ```
 
-## Promise.all 方法
+## 三、Promise.all 方法
 
--   `Promise.all(promise)`
--   `promise`：包含 n个 promise 的数组
-> 说明：返回一个新的 Promise 对象，只有所有的Promise都成功才成功，只要有一个失败了就直接失败
+-   `Promise.all(promises)`
+-   `promises`：包含 n个 `promise` 的数组
+
+:::tip 说明
+返回一个新的 Promise 对象，只有所有的Promise都成功才成功，只要有一个失败了就直接失败
+:::
 
 ```js
 let p1 = new Promise((resolve, reject) => {
@@ -71,11 +81,14 @@ const res = Promise.all([p1, p2, p3, p4]);
 console.log(res); //rejected  [4]
 ```
 
-## Promise.race 方法
+## 四、Promise.race 方法
 
--   `Promise.race(promise)`
--   `promise`：包含 n个 promise 的数组
-> 说明：返回一个新的 Promise 对象，第一个完成的Promise的结果状态就是最终的结果状态
+-   `Promise.race(promises)`
+-   `promises`：包含 n个 `promise` 的数组
+
+:::tip 说明
+返回一个新的 Promise 对象，第一个完成的Promise的结果状态就是最终的结果状态
+:::
 
 
 ```js

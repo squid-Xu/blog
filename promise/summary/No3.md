@@ -3,7 +3,8 @@
 ## async 函数
 
 - 1、函数的返回值为 `promise` 对象
-- 2、`promise` 对象的结果由async函数执行的返回值决定
+
+- 2、`promise` 对象的结果由 `async` 函数执行的返回值决定
 
 ```js
 async function main() {
@@ -24,14 +25,17 @@ console.log(res);
 
 ## await 表达式
 
-- 1、await 右侧的表达式一般为promise对象，但也可以是其他的值
-- 2、如果表达式是promise对象，await 返回的是promise成功的值
-- 3、如果表达式是其他值，直接将此值作为await的返回值
+- 1、`await` 右侧的表达式一般为 `promise` 对象，但也可以是其他的值
+
+- 2、如果表达式是 `promise` 对象，`await` 返回的是 `promise` 成功的值
+
+- 3、如果表达式是其他值，直接将此值作为 `await` 的返回值
 
 
-> [!tip]
-> - 1、await 必须写在async函数中，但async函数中可以没有await
-> - 2、如果 await 的promise失败了，就会抛出异常，需要通过try catch 捕获异常
+::: tip 注意
+- 1、`await` 必须写在 `async` 函数中，但 `async` 函数中可以没有 `await`
+- 2、如果 `await` 的 `promise` 失败了，就会抛出异常，需要通过 `try catch` 捕获异常
+:::
 
 ```js
 async function main() {

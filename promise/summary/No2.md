@@ -347,7 +347,7 @@ const res = p.then(
 console.log(res);
 ```
 
-## 异步修改状态then方法结果返回
+## 异步修改状态then方法返回结果
 
 ```js
 function myPromise(executor) {
@@ -623,7 +623,7 @@ console.log(res);
 ```
 
 
-## catch方法异常穿透已值传递
+## catch方法异常穿透与值传递
 
 
 ```js {47-56}
