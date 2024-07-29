@@ -35,4 +35,40 @@ export const QUESTIONS_DATA = [
 		desc: '以前端面试题来驱动学习，提倡每日学习与思考，每天进步一点！',
 		link: 'http://www.h-camel.com/index.html',
 	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '前端工匠',
+		desc: '接下去的路我们一起走',
+		link: 'https://github.com/ljianshu/Blog',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '木易杨前端进阶',
+		desc: '高级前端进阶之路',
+		link: 'https://muyiy.cn/',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '前端瓶子君',
+		desc: '前端瓶子君',
+		link: 'https://github.com/sisterAn/blog',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '前端面试',
+		desc: '前端面试',
+		link: 'https://lgwebdream.github.io/FE-Interview/',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: 'Front-End-Interview-Notebook',
+		desc: 'Front-End-Interview-Notebook',
+		link: 'https://github.com/CavsZhouyou/Front-End-Interview-Notebook',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '魔镜杂货铺',
+		desc: '魔镜杂货铺',
+		link: 'https://www.yuque.com/_mirror',
+	},
 ];
