@@ -90,3 +90,33 @@ export const REACT_DATA = [
 		link: 'https://zh-hans.react.dev/',
 	},
 ];
+
+export const NODEJS_DATA = [
+	{
+		icon: 'https://nodejs.org/static/images/favicons/favicon.png',
+		title: 'Node.js',
+		desc: '在任何地方运行 JavaScript',
+		link: 'https://nodejs.org/zh-cn',
+	},
+];
+
+export const NODEJS_FRAME_DATA = [
+	{
+		icon: 'https://express.nodejs.cn/images/favicon.png',
+		title: 'Express',
+		desc: '快速、独立、极简的 Node.js Web 框架',
+		link: 'https://express.nodejs.cn',
+	},
+	{
+		icon: 'https://koa.nodejs.cn/public/favicon.png',
+		title: 'Koa',
+		desc: '用于 Node.js 的下一代 Web 框架',
+		link: 'https://koa.nodejs.cn/',
+	},
+	{
+		icon: 'https://www.eggjs.org/favicon.png',
+		title: 'Egg',
+		desc: '为企业级框架和应用而生',
+		link: 'https://www.eggjs.org/zh-CN',
+	},
+];

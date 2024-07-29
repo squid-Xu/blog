@@ -1,0 +1,80 @@
+export const LEADER_DATA = [
+	{
+		icon: 'https://cdn-static.sspai.com/favicon/sspai.ico',
+		title: '少数派',
+		desc: '高效工作，品质生活',
+		link: 'https://sspai.com',
+	},
+	{
+		icon: 'https://static001.infoq.cn/static/infoq/www/img/share-default-5tgbiuhgfefgujjhg.png',
+		title: 'InfoQ',
+		desc: '促进软件开发及相关领域知识与创新的传播-极客邦',
+		link: 'https://www.infoq.cn',
+	},
+	{
+		icon: 'https://docschina.org/favicon.svg',
+		title: '印记中文',
+		desc: '深入挖掘国外前端新领域，为国内 Web 前端开发人员提供优质文档',
+		link: 'https://docschina.org',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '科技爱好者周刊',
+		desc: '记录每周值得分享的科技内容，周五发布',
+		link: 'https://github.com/ruanyf/weekly',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: 'TNT-Weekly',
+		desc: '高质量的关于小程序、h5 等前端领域的文章和项目',
+		link: 'https://github.com/tnfe/TNT-Weekly',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '前端GitHub',
+		desc: '专注于挖掘优秀的前端开源项目',
+		link: 'https://github.com/FrontEndGitHub/FrontEndGitHub',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '每日时报',
+		desc: '文章、工具、新闻、视频等几大板块作为主要分类',
+		link: 'https://wubaiqing.github.io/zaobao/',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '前端精读',
+		desc: '前端界的好文精读，每周更新',
+		link: 'https://github.com/ascoders/weekly',
+	},
+	{
+		icon: 'https://wangdoc.com/assets/icons/android-icon-192x192.png',
+		title: '网道',
+		desc: '复杂的技术，简单的讲解',
+		link: 'https://wangdoc.com/',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '冴羽的博客',
+		desc: 'JavaScript深入系列、JavaScript专题系列、ES6系列、React系列',
+		link: 'https://github.com/mqyqingfeng/Blog',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '木易杨 的博客',
+		desc: '砥砺前行 未来可期',
+		link: 'https://github.com/yygmind/blog',
+	},
+	{
+		icon: 'https://cdn.learnku.com/uploads/images/201901/27/1/jdor3lMsMw.png!/both/44x44',
+		title: 'LearnKu',
+		desc: '专为终身学习者定制的编程知识社区',
+		link: 'https://learnku.com/',
+	},
+	{
+		icon: 'https://github.com/fluidicon.png',
+		title: '大千世界',
+		desc: '砥砺前行 未来可期',
+		link: 'https://github.com/husky-dot/xiaozhi',
+	},
+];

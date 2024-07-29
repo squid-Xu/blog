@@ -72,12 +72,31 @@ export default defineConfig({
 					items: [
 						{ text: 'Vue生态', link: '/nav/front/No1' },
 						{ text: 'React生态', link: '/nav/front/No2' },
+						{ text: 'Node.js生态', link: '/nav/front/No3' },
 					],
 				},
 				{
 					text: '常用工具',
 					collapsed: false,
-					items: [{ text: '开放数据', link: '/nav/tool/No1' }],
+					items: [
+						{ text: '开放数据', link: '/nav/tool/No1' },
+						{ text: '免费资源', link: '/nav/tool/No2' }
+					],
+				},
+				{
+					text: '面试必备',
+					collapsed: false,
+					items: [{ text: '刷题宝典', link: '/nav/interview/No1' }],
+				},
+				{
+					text: '前端文档',
+					collapsed: false,
+					items: [{ text: 'TypeScript', link: '/nav/document/No1' }],
+				},
+				{
+					text: '大前端',
+					collapsed: false,
+					items: [{ text: '优秀的大前端Leader', link: '/nav/excellent/No1' }],
 				},
 			],
 			'/javascript/': [
