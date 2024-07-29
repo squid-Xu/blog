@@ -1,11 +1,12 @@
 # 类型
 
-## 类型推断
+## 类型推断（不建议使用）
 - 数据没有指定明确的类型，那么`ts`会按照类型推论的规则推断出一个类型
 
 ```js
 let a = 'aa';
-a = 'ss';
+a = 'ss'; // 推断 str 为字符串类型
+a = 10; //报错，不能将数值赋值给字符串类型
 ```
 
 ## 类型断言
@@ -14,10 +15,12 @@ a = 'ss';
 ```js
 let arr = [1, 2, 3];
 let result = arr.find(v => v > 2) as number;
+//ts比较严谨，若 result 为未定义的时候，则不能与 5 相乘，所以报错（在js中可以）
+//所以加上 as number 来约束 result 的类型
 let sum = result * 5;
 ```
 
-## 基础类型
+## 基础类型 （建议使用）
 
 ```js
 let b: number = 1;
@@ -29,6 +32,7 @@ let c: boolean = false;
 - 可以使用 `|` 来连接多个类型（联合类型）
 
 ```js
+// 联合类型：d 只能被分配 number 或 string 类型
 let d: number | string = 'false';
 ```
 
@@ -45,6 +49,7 @@ let arr2: Array<string> = ['a', 'b', 'c'];
 - 元组是一种表示具有固定数量和类型的有序元素集合的数据类型
 
 ```js
+//'?'为可选项，该位置可不填，但是填了之后也只能是对应的类型
 let e: [number, string, boolean?] = [1, 'w', false];
 ```
 
@@ -68,21 +73,42 @@ console.log(colorName); // 输出 "Blue"
 ## 函数
 - 函数是一种特殊的对象，可以被调用。TS 里的函数和原生，ES 6 里的函数差不太多，只是多了一些其他功能。
 
-```js
+```js{9}
+// a 和 b 规定了约束了参数的类型
+// void 表示函数无返回值
 function sum1(a: number, b: string): void {}
 sum1(1, '2');
+
+//b 和 c 都为可选项
+//b 不填则默认为 10，c 不填默认没有
+//...rest 为剩余参数，且剩余值为一个数组结构，则可对其进行约束，为...rest: number[]
+//注意，必选参数在左，可选参数在右，否则报错
+function MyFn2(a: boolean, b = 10, c?: string, ...rest: number[]): boolean {
+ return a;
+}
+//使用
+const f: boolean = MyFn2(true, 20, "zx", 1, 2, 3, 4, 5);
+console.log(f);  //true 
 ```
 
 ## 接口
 - 用来定义一个类、对象或函数的结构和类型的规范
 ```js
+//正常定义对象类型
+const obj = {
+ name: "squid-Xu",
+ age: 25,
+};
+
+//定义接口
 interface objType {
 	name: string;
 	age: number;
 }
 
+//使用该接口来定义对象
 let obj: objType = {
-	name: 'ss',
+	name: 'squid-Xu',
 	age: 11,
 };
 ```
