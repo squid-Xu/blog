@@ -155,6 +155,7 @@ export default defineConfig({
 					collapsed: false,
 					items: [
 						{ text: '1. TS简介', link: '/typescript/basics/No1' },
+						{ text: '2. TS类型', link: '/typescript/basics/No2' },
 					],
 				},
 			],

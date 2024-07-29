@@ -1,2 +1,2 @@
 
-console.log('111');
+let a1: number = 12;
