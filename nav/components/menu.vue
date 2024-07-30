@@ -4,7 +4,7 @@
 			<article class="box">
 				<div class="box-header">
 					<div class="icon">
-						<img :src="item.icon" class="icon-img" :alt="item.title" />
+						<img :src="item.icon" class="icon-img" alt="" />
 					</div>
 					<h5 class="title">{{ item.title }}</h5>
 				</div>
