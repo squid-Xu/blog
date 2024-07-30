@@ -158,6 +158,13 @@ export default defineConfig({
 						{ text: '2. TS类型', link: '/typescript/basics/No2' },
 					],
 				},
+				{
+					text: '实践',
+					collapsed: false,
+					items: [
+						{ text: '1. 索引签名', link: '/typescript/practice/No1' },
+					],
+				},
 			],
 			'/live/': [
 				{

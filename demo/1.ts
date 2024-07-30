@@ -1,2 +1,16 @@
+interface Animal {
+    name: string;
+}
+interface Dog extends Animal {
+    breed: string;
+}
 
-let a1: number = 12;
+interface T1 {
+    [a: string]: Dog;
+    [b: number]: Animal; // Error
+}
+
+interface T2 {
+    [a: string]: Animal;
+    [b: number]: Dog; // OK
+}
