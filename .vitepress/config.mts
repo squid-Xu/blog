@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+	lang: "zh-CN",
 	base: '/blog/',
 	title: '麻辣鱿鱼徐',
 	head: [['link', { rel: 'icon', href: '/blog/favicon.ico' }]],
@@ -188,6 +189,7 @@ export default defineConfig({
 				appId: 'HJSOWH3PPH',
 				apiKey: '2618f8fac6e05f71e0f2db49c1e1126f',
 				indexName: 'squid-xuio',
+				placeholder: "请输入关键词"
 			},
 		},
 		// 定义文章底部按钮对应的文本标题
