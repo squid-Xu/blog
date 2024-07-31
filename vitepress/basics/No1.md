@@ -13,12 +13,12 @@
 
 ### 安装使用
 
-- 1、安装依赖
+#### 1、安装依赖
 
 ```sh
 npm i vitepress-plugin-image-viewer
 ```
-- 2、添加代码
+#### 2、添加代码
 
 ::: code-group
 

@@ -174,7 +174,10 @@ export default defineConfig({
 				{
 					text: '总结',
 					collapsed: false,
-					items: [{ text: '1、图片点击放大、预览', link: '/vitepress/basics/No1' }],
+					items: [
+						{ text: '1、图片点击放大、预览', link: '/vitepress/basics/No1' },
+						{ text: '2、给博客添加评论功能', link: '/vitepress/basics/No2' },
+					],
 				},
 			],
 			'/live/': [
