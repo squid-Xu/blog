@@ -6,9 +6,9 @@
 					<div class="icon">
 						<img :src="item.icon" class="icon-img" alt="" />
 					</div>
-					<h5 class="title">{{ item.title }}</h5>
+					<div class="title" :title="item.title">{{ item.title }}</div>
 				</div>
-				<p class="desc">{{ item.desc }}</p>
+				<p class="desc" :title="item.desc">{{ item.desc }}</p>
 			</article>
 		</a>
 	</div>
@@ -28,6 +28,7 @@ defineProps<{
 .list {
 	display: flex;
 	flex-wrap: wrap;
+
 	.item {
 		flex: 1;
 		min-width: 200px;
@@ -38,15 +39,19 @@ defineProps<{
 		text-decoration: inherit;
 		background-color: var(--vp-c-bg-alt);
 		transition: all 0.25s;
+
 		&:last-child {
 			margin-right: 0;
 		}
+
 		&:nth-child(3n) {
 			margin-right: 0;
 		}
+
 		&:nth-child(3n + 1) {
 			margin-left: 0;
 		}
+
 		&:hover {
 			box-shadow: var(--vp-shadow-2);
 			border-color: var(--vp-c-brand);
@@ -54,12 +59,14 @@ defineProps<{
 			background-color: var(--vp-c-bg);
 		}
 	}
+
 	.box {
 		display: flex;
 		flex-direction: column;
 		padding: 12px;
 		height: 100%;
 		color: var(--vp-c-text-1);
+
 		&-header {
 			display: flex;
 			align-items: center;
@@ -77,9 +84,11 @@ defineProps<{
 		font-size: 24px;
 		background-color: var(--vp-c-default-soft);
 		transition: background-color 0.25s;
+
 		.icon-img {
 			border-radius: 4px;
 			width: 24px;
+			pointer-events: none;
 		}
 	}
 

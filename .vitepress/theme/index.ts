@@ -1,13 +1,22 @@
 import { h } from 'vue';
 import DefaultTheme from 'vitepress/theme';
-import { onMounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vitepress';
-import mediumZoom from 'medium-zoom';
-import CustomLayout from './layouts/CustomLayout.vue';
-import Comment from './components/comment.vue';
-import LockedPage from './components/LockedPage.vue';
 
+// 加载css
 import './index.css';
+
+//评论
+import Comment from './components/comment.vue';
+//页面锁
+import LockedPage from './components/LockedPage.vue';
+//导航布局
+import NavMenu from './components/NavMenu.vue';
+
+// 图片放大/预览
+import 'viewerjs/dist/viewer.min.css';
+import imageViewer from 'vitepress-plugin-image-viewer';
+// 如需按钮点击预览图片
+import vImageViewer from 'vitepress-plugin-image-viewer/lib/vImageViewer.vue';
 
 export default {
 	...DefaultTheme,
@@ -19,21 +28,15 @@ export default {
 	},
 	//自定义页面布局
 	enhanceApp({ app }) {
-		app.component('CustomLayout', CustomLayout);
+		// 注册全局组件，如果你不想使用也可以不添加
+		app.component('vImageViewer', vImageViewer);
 		app.component('LockedPage', LockedPage);
+		app.component('NavMenu', NavMenu);
 	},
-	// 增加文章图片放大
 	setup() {
+		// 获取路由
 		const route = useRoute();
-		const initZoom = () => {
-			mediumZoom('.main img:not(.icon-img)', { background: 'var(--vp-c-bg)' });
-		};
-		onMounted(() => {
-			initZoom();
-		});
-		watch(
-			() => route.path,
-			() => nextTick(() => initZoom())
-		);
+		// 使用
+		imageViewer(route);
 	},
 };

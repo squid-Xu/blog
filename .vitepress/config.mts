@@ -2,7 +2,8 @@ import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-	lang: "zh-CN",
+	// 应用级配置选项
+	lang: 'zh-CN',
 	base: '/blog/',
 	title: '麻辣鱿鱼徐',
 	head: [['link', { rel: 'icon', href: '/blog/favicon.ico' }]],
@@ -48,6 +49,10 @@ export default defineConfig({
 				link: '/typescript/basics/No1',
 			},
 			{
+				text: 'VitePress',
+				link: '/vitepress/basics/No1',
+			},
+			{
 				text: '小程序',
 				link: '/wechat/',
 			},
@@ -81,7 +86,7 @@ export default defineConfig({
 					collapsed: false,
 					items: [
 						{ text: '开放数据', link: '/nav/tool/No1' },
-						{ text: '免费资源', link: '/nav/tool/No2' }
+						{ text: '免费资源', link: '/nav/tool/No2' },
 					],
 				},
 				{
@@ -162,9 +167,14 @@ export default defineConfig({
 				{
 					text: '实践',
 					collapsed: false,
-					items: [
-						{ text: '1. 索引签名', link: '/typescript/practice/No1' },
-					],
+					items: [{ text: '1. 索引签名', link: '/typescript/practice/No1' }],
+				},
+			],
+			'/vitepress/': [
+				{
+					text: '总结',
+					collapsed: false,
+					items: [{ text: '1、图片点击放大、预览', link: '/vitepress/basics/No1' }],
 				},
 			],
 			'/live/': [
@@ -180,7 +190,8 @@ export default defineConfig({
 		// 底部栏定义的内容
 		footer: {
 			message: 'Released under the MIT License.',
-			copyright: 'Copyright © 2024-present squid-Xu <img style="display:inline;transform: translateY(4px);" src="https://visitor-badge.laobi.icu/badge?page_id=squid-Xu.blog" alt="visitors">',
+			copyright:
+				'Copyright © 2024-present squid-Xu <img style="display:inline;transform: translateY(4px);" src="https://visitor-badge.laobi.icu/badge?page_id=squid-Xu.blog" alt="visitors">',
 		},
 		// 添加搜索框 https://xiaoyi1255.github.io/guide/project/algolia
 		search: {
@@ -189,7 +200,7 @@ export default defineConfig({
 				appId: 'HJSOWH3PPH',
 				apiKey: '2618f8fac6e05f71e0f2db49c1e1126f',
 				indexName: 'squid-xuio',
-				placeholder: "请输入关键词"
+				placeholder: '请输入关键词',
 			},
 		},
 		// 定义文章底部按钮对应的文本标题
