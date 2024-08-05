@@ -53,6 +53,10 @@ export default defineConfig({
 				link: '/vitepress/basics/No1',
 			},
 			{
+				text: 'ECMAScript',
+				link: '/ecmascript/basics/No1',
+			},
+			{
 				text: '小程序',
 				link: '/wechat/',
 			},
@@ -177,6 +181,41 @@ export default defineConfig({
 					items: [
 						{ text: '1、图片点击放大、预览', link: '/vitepress/basics/No1' },
 						{ text: '2、给博客添加评论功能', link: '/vitepress/basics/No2' },
+					],
+				},
+			],
+			'/ecmascript/': [
+				{
+					text: '简介',
+					collapsed: false,
+					items: [
+						{ text: '1、ES介绍', link: '/ecmascript/basics/No1' },
+						{ text: '2、名词介绍', link: '/ecmascript/basics/No2' },
+					],
+				},
+				{
+					text: 'ES6',
+					collapsed: false,
+					items: [
+						{ text: '1、let', link: '/ecmascript/es6/No1' },
+						{ text: '2、const', link: '/ecmascript/es6/No2' },
+						{ text: '3、变量的解构赋值', link: '/ecmascript/es6/No3' },
+						{ text: '4、模版字符串', link: '/ecmascript/es6/No4' },
+						{ text: '5、简化对象写法', link: '/ecmascript/es6/No5' },
+						{ text: '6、箭头函数', link: '/ecmascript/es6/No6' },
+						{ text: '7、rest参数', link: '/ecmascript/es6/No7' },
+						{ text: '8、扩展运算符', link: '/ecmascript/es6/No8' },
+						{ text: '9、Symbol', link: '/ecmascript/es6/No9' },
+						{ text: '10、迭代器', link: '/ecmascript/es6/No10' },
+						{ text: '11、生成器', link: '/ecmascript/es6/No11' },
+						{ text: '12、proxy与reject', link: '/ecmascript/es6/No12' },
+						{ text: '13、Promise', link: '/ecmascript/es6/No13' },
+						{ text: '14、Set', link: '/ecmascript/es6/No14' },
+						{ text: '15、Map', link: '/ecmascript/es6/No15' },
+						{ text: '16、class类', link: '/ecmascript/es6/No16' },
+						{ text: '17、数值扩展', link: '/ecmascript/es6/No17' },
+						{ text: '18、对象方法扩展', link: '/ecmascript/es6/No18' },
+						{ text: '19、模块化', link: '/ecmascript/es6/No19' },
 					],
 				},
 			],
