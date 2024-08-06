@@ -7,10 +7,13 @@
 	</head>
 	<body>
 		<script>
-			let hn = '河南';
-			let zz = `${hn}的省会是郑州`;
+			let arr = [1, 2, 3, 3, 4, 2, 4, 1, 2, 4];
 
-			console.log(zz); //河南的省会是郑州
+			let arr2 = [3, 4, 6, 4, 5];
+
+			let result = [...new Set(arr)].filter(v => !new Set(arr2).has(v));
+
+			console.log(result); // [1, 2]
 		</script>
 	</body>
 </html>
