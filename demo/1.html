@@ -7,13 +7,23 @@
 	</head>
 	<body>
 		<script>
-			let arr = [1, 2, 3, 3, 4, 2, 4, 1, 2, 4];
+			let m = new Map();
+			// 添加元素
+			m.set('name', 'squid-Xu');
+			m.set('change', function () {
+				console.log('1111');
+			});
+			let key = {
+				value: 1,
+			};
+			m.set(key, [11, 22, 33]);
 
-			let arr2 = [3, 4, 6, 4, 5];
-
-			let result = [...new Set(arr)].filter(v => !new Set(arr2).has(v));
-
-			console.log(result); // [1, 2]
+			for (let v of m) {
+				console.log(v);
+				// ['name', 'squid-Xu']
+				// ['change', ƒ]
+				// [{…}, Array(3)]
+			}
 		</script>
 	</body>
 </html>
