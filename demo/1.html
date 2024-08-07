@@ -6,10 +6,9 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<script>
-			console.log(Math.sign(100)); // 1
-			console.log(Math.sign(0)); // 0
-			console.log(Math.sign(-200)); // -1
+		<script type="module">
+			import * as m1 from './1.js';
+			console.log(m1); //Module {Symbol(Symbol.toStringTag): 'Module'}
 		</script>
 	</body>
 </html>
