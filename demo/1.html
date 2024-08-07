@@ -7,23 +7,20 @@
 	</head>
 	<body>
 		<script>
-			let m = new Map();
-			// 添加元素
-			m.set('name', 'squid-Xu');
-			m.set('change', function () {
-				console.log('1111');
-			});
-			let key = {
-				value: 1,
-			};
-			m.set(key, [11, 22, 33]);
-
-			for (let v of m) {
-				console.log(v);
-				// ['name', 'squid-Xu']
-				// ['change', ƒ]
-				// [{…}, Array(3)]
+			// ES6
+			class Phone {
+				get price() {
+					console.log('价格属性被读取了');
+				}
+				set price(newVal) {
+					console.log('价格属性被设置了');
+				}
 			}
+
+			let s = new Phone();
+
+			s.price; //价格属性被读取了
+			s.price = '1999'; // 价格属性被设置了
 		</script>
 	</body>
 </html>
