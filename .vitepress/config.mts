@@ -209,7 +209,7 @@ export default defineConfig({
 						{ text: '10、Symbol数据类型', link: '/ecmascript/es6/No10' },
 						{ text: '11、迭代器（Iterators）', link: '/ecmascript/es6/No11' },
 						{ text: '12、生成器（Generators）', link: '/ecmascript/es6/No12' },
-						{ text: '13、proxy与reject', link: '/ecmascript/es6/No13' },
+						{ text: '13、Proxy与Reflect', link: '/ecmascript/es6/No13' },
 						{ text: '14、Promise', link: '/ecmascript/es6/No14' },
 						{ text: '15、Set', link: '/ecmascript/es6/No15' },
 						{ text: '16、Map', link: '/ecmascript/es6/No16' },
