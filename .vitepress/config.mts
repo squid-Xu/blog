@@ -219,6 +219,50 @@ export default defineConfig({
 						{ text: '20、模块化（Modules）', link: '/ecmascript/es6/No20' },
 					],
 				},
+				{
+					text: 'ES7',
+					collapsed: false,
+					items: [
+						{ text: '1、Array.prototype.includes', link: '/ecmascript/es7/No1' },
+						{ text: '2、指数操作符 ** 幂', link: '/ecmascript/es7/No2' },
+					],
+				},
+				{
+					text: 'ES8',
+					collapsed: false,
+					items: [
+						{ text: '1、async 和 await', link: '/ecmascript/es8/No1' },
+						{ text: '2、对象方法扩展', link: '/ecmascript/es8/No2' },
+					],
+				},
+				{
+					text: 'ES9',
+					collapsed: false,
+					items: [
+						{ text: '1、扩展运算符 Rest/Spread 属性', link: '/ecmascript/es9/No1' },
+						{ text: '2、正则扩展', link: '/ecmascript/es9/No2' },
+						{ text: '3、dotAll模式', link: '/ecmascript/es9/No3' },
+					],
+				},
+				{
+					text: 'ES10',
+					collapsed: false,
+					items: [
+						{ text: '1、Object.fromEntries()', link: '/ecmascript/es10/No1' },
+						{ text: '2、字符串扩展 trimStart() 和 trimEnd()', link: '/ecmascript/es10/No2' },
+						{ text: '3、数组方式扩展 flat() 和 flatMap()', link: '/ecmascript/es10/No3' },
+						{ text: '4、Symbol.prototype.description', link: '/ecmascript/es10/No4' },
+					],
+				},
+				{
+					text: 'ES11',
+					collapsed: false,
+					items: [
+						{ text: '1、扩展运算符 Rest/Spread 属性', link: '/ecmascript/es11/No1' },
+						{ text: '2、正则扩展', link: '/ecmascript/es11/No2' },
+						{ text: '2、dotAll模式', link: '/ecmascript/es11/No3' },
+					],
+				},
 			],
 			'/live/': [
 				{
