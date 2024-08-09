@@ -1,21 +1,29 @@
-# 可选链操作符 Optional chaining
+# 动态import()
 
-- 层级比较深时，做有无的判断，使用 `?.`
+
 
 ```js
-main({
-    db: {
-        host: '22.22.4.5',
-        username: 'root',
-    },
-});
-function main(config) {
-    // ES5方法
-    const dbhost = config && config.db && config.db.host;
-    console.log(dbhost); //22.22.4.5
+// index.html
+<body>
+    <button id="btn">测试</button>
+    <script src="./1.js" type="module"></script>
+</body>
 
-    // 新特性
-    const dbhost1 = config?.db?.host; //省去层层判断
-    console.log(dbhost1); //22.22.4.5
+// 1.js
+// 获取元素
+const btn = document.getElementById('btn');
+
+btn.onclick = function () {
+	import('./2.js').then(res => {
+		console.log(res); //Module {Symbol(Symbol.toStringTag): 'Module'}
+		res.hello(); //你好
+	});
+};
+
+// 2.js
+
+export function hello() {
+	console.log('你好');
 }
-``
+
+```

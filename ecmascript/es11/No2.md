@@ -1,20 +1,23 @@
-# Promise.allSettled
+# String.prototype.matchAll
+
+
+- 返回结果是可迭代对象
 
 ```js
-// 声明两个promise对象
-const p1 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve('成功-1');
-    }, 1000);
-});
-const p2 = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        // resolve('成功-2');
-        reject('失败');
-    }, 1000);
-});
+let str = `
+        <ul>
+            <li>
+                <a>电影1</a>
+                <p>上映日期：1992-2-3</p>
+            </li>
+            <li>
+                <a>定影2</a>
+                <p>上映日期：2004-3-2</p>
+            </li>
+        </ul>`;
+// 声明正则
+const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
 
-// 调用 allSettled 方法
-const result = Promise.allSettled([p1, p2]);
-console.log(result); // 返回结果总是成功的
+const result = str.matchAll(reg);
+console.log([...result]);
 ```

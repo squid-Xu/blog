@@ -1,23 +1,21 @@
-# String.prototype.matchAll
+# 可选链操作符 Optional chaining
 
-
-- 返回结果是可迭代对象
+- 层级比较深时，做有无的判断，使用 `?.`
 
 ```js
-let str = `
-        <ul>
-            <li>
-                <a>电影1</a>
-                <p>上映日期：1992-2-3</p>
-            </li>
-            <li>
-                <a>定影2</a>
-                <p>上映日期：2004-3-2</p>
-            </li>
-        </ul>`;
-// 声明正则
-const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+main({
+    db: {
+        host: '22.22.4.5',
+        username: 'root',
+    },
+});
+function main(config) {
+    // ES5方法
+    const dbhost = config && config.db && config.db.host;
+    console.log(dbhost); //22.22.4.5
 
-const result = str.matchAll(reg);
-console.log([...result]);
-```
+    // 新特性
+    const dbhost1 = config?.db?.host; //省去层层判断
+    console.log(dbhost1); //22.22.4.5
+}
+``

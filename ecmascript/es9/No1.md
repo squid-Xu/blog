@@ -8,6 +8,7 @@
 - 在ES9中为对象提供了像数组一样的rest参数和扩展运算符
 
 ```js
+// Rest 属性
 function add({ a, b, ...data }) {
     console.log(a); // 1
     console.log(b); // 2
@@ -24,6 +25,7 @@ add({
 
 
 ```js
+// Spread 属性
 const obj1 = {
     a: 1,
     b: 2,

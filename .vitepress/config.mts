@@ -232,7 +232,10 @@ export default defineConfig({
 					collapsed: false,
 					items: [
 						{ text: '1、async 和 await', link: '/ecmascript/es8/No1' },
-						{ text: '2、对象方法扩展', link: '/ecmascript/es8/No2' },
+						{ text: '2、Object.values/Object.entries', link: '/ecmascript/es8/No2' },
+						{ text: '3、Object.getOwnPropertyDescriptors()', link: '/ecmascript/es8/No3' },
+						{ text: '4、字符串补全', link: '/ecmascript/es8/No4' },
+						{ text: '5、参数列表支持尾逗号', link: '/ecmascript/es8/No5' },
 					],
 				},
 				{
@@ -242,6 +245,8 @@ export default defineConfig({
 						{ text: '1、扩展运算符 Rest/Spread 属性', link: '/ecmascript/es9/No1' },
 						{ text: '2、正则扩展', link: '/ecmascript/es9/No2' },
 						{ text: '3、dotAll模式', link: '/ecmascript/es9/No3' },
+						{ text: '4、for-await-of 异步迭代', link: '/ecmascript/es9/No4' },
+						{ text: '5、Promise.finally', link: '/ecmascript/es9/No5' },
 					],
 				},
 				{
@@ -252,19 +257,20 @@ export default defineConfig({
 						{ text: '2、字符串扩展 trimStart() 和 trimEnd()', link: '/ecmascript/es10/No2' },
 						{ text: '3、数组方式扩展 flat() 和 flatMap()', link: '/ecmascript/es10/No3' },
 						{ text: '4、Symbol.prototype.description', link: '/ecmascript/es10/No4' },
+						{ text: '5、可选的 catch 参数', link: '/ecmascript/es10/No5' },
 					],
 				},
 				{
 					text: 'ES11',
 					collapsed: false,
 					items: [
-						{ text: '1、私有属性', link: '/ecmascript/es11/No1' },
-						{ text: '2、Promise.allSettled', link: '/ecmascript/es11/No2' },
-						{ text: '3、String.prototype.matchAll', link: '/ecmascript/es11/No3' },
-						{ text: '4、可选链操作符 Optional chaining', link: '/ecmascript/es11/No4' },
-						{ text: '5、动态import()', link: '/ecmascript/es11/No5' },
-						{ text: '6、BigInt', link: '/ecmascript/es11/No6' },
-						{ text: '7、globalThis', link: '/ecmascript/es11/No7' },
+						{ text: '1、Promise.allSettled', link: '/ecmascript/es11/No1' },
+						{ text: '2、String.prototype.matchAll', link: '/ecmascript/es11/No2' },
+						{ text: '3、可选链操作符 Optional chaining', link: '/ecmascript/es11/No3' },
+						{ text: '4、动态import()', link: '/ecmascript/es11/No4' },
+						{ text: '5、BigInt', link: '/ecmascript/es11/No5' },
+						{ text: '6、globalThis', link: '/ecmascript/es11/No6' },
+						{ text: '7、空值合并', link: '/ecmascript/es11/No7' },
 					],
 				},
 				{
@@ -276,6 +282,24 @@ export default defineConfig({
 						{ text: '3、WeakRefs', link: '/ecmascript/es12/No3' },
 						{ text: '4、逻辑赋值运算符', link: '/ecmascript/es12/No4' },
 						{ text: '5、数字分隔符', link: '/ecmascript/es12/No5' },
+					],
+				},
+				{
+					text: 'ES13',
+					collapsed: false,
+					items: [
+						{ text: '1、类私有属性', link: '/ecmascript/es13/No1' },
+						{ text: '2、私有字段检查', link: '/ecmascript/es13/No2' },
+						{ text: '3、顶层 await', link: '/ecmascript/es13/No3' },
+						{ text: '4、.at 方法返回指定索引的元素', link: '/ecmascript/es13/No4' },
+						{ text: '5、Object.hasOwn()', link: '/ecmascript/es13/No5' },
+					],
+				},
+				{
+					text: 'ES14',
+					collapsed: false,
+					items: [
+						{ text: '1、Array 支持从尾部查找', link: '/ecmascript/es14/No1' },
 					],
 				},
 			],

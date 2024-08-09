@@ -1,27 +1,11 @@
-# BigInt
+# globalThis
 
-- 表示（-2^53-1~2^53-1）之间的数据
+
+- 始终指向全局对象
+
+- JavaScript 可以运行在不同的环境，浏览器为 window、Node.js 为 global。为了能够统一全局环境变量，引入了 globalThis。
 
 ```js
-// 大整形
-let n = 100n;
-console.log(typeof n); // bigint
-console.log(n); // n
-
-// 函数
-let n1 = 123;
-console.log(BigInt(n1)); // 123n
-//转化的必须是整数，
-// console.log(BigInt(1.2)); // Error; The number 1.2 cannot be converted to a BigInt because it is not an integer
-
-// 大数值运算
-let max = Number.MAX_SAFE_INTEGER;
-console.log(max); //9007199254740991
-console.log(max + 1); //9007199254740992
-console.log(max + 2); //9007199254740992  // 这个计算就不对了
-
-console.log(BigInt(max)); //9007199254740991n
-//BigInt不能直接与普通数值做运算
-// console.log(BigInt(max) + 1); // Error; Cannot mix BigInt and other types, use explicit conversions
-console.log(BigInt(max) + BigInt(1)); //9007199254740992n
+window === globalThis // 浏览器环境
+global === globalThis // Node.js 环境
 ```
