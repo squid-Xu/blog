@@ -1,3 +1,15 @@
+# 动态import()
+
+
+
+```js
+// index.html
+<body>
+    <button id="btn">测试</button>
+    <script src="./1.js" type="module"></script>
+</body>
+
+// 1.js
 // 获取元素
 const btn = document.getElementById('btn');
 
@@ -7,3 +19,11 @@ btn.onclick = function () {
 		res.hello(); //你好
 	});
 };
+
+// 2.js
+
+export function hello() {
+	console.log('你好');
+}
+
+```
