@@ -57,21 +57,21 @@ export default defineConfig({
 				link: '/ecmascript/basics/No1',
 			},
 			{
-				text: '小程序',
-				link: '/wechat/',
+				text: '项目案例',
+				link: '/case/No1',
 			},
 			{
 				text: '总结',
-				link: '/summary/',
+				link: '/summary/wechat/No1',
 			},
 			{
 				text: '生活',
 				link: '/live/house/No1',
 			},
-			{
-				text: '工作',
-				link: '/work/No1',
-			},
+			// {
+			// 	text: '工作',
+			// 	link: '/work/No1',
+			// },
 		],
 		// 定义侧边栏
 		sidebar: {
@@ -298,9 +298,48 @@ export default defineConfig({
 				{
 					text: 'ES14',
 					collapsed: false,
+					items: [{ text: '1、Array 支持从尾部查找', link: '/ecmascript/es14/No1' }],
+				},
+			],
+			'/case/': [{ text: '家族图谱', link: '/case/No1' }],
+			'/summary/': [
+				{
+					text: '微信小程序',
+					collapsed: false,
+					items: [{ text: '微信小程序 setData 原理', link: '/summary/wechat/No1' }],
+				},
+				{
+					text: 'vue',
+					collapsed: false,
+					items: [{ text: 'Vue2、Vue3 和 React 中 Diff 算法的区别', link: '/summary/vue/No1' }],
+				},
+				{
+					text: 'h5',
+					collapsed: false,
+					items: [{ text: '移动端开发自适应配置', link: '/summary/h5/No1' }],
+				},
+				{
+					text: 'css',
+					collapsed: false,
 					items: [
-						{ text: '1、Array 支持从尾部查找', link: '/ecmascript/es14/No1' },
+						{ text: 'BFC 是什么，解决了什么问题', link: '/summary/css/No1' },
+						{ text: '清除浮动的方式', link: '/summary/css/No2' },
 					],
+				},
+				{
+					text: 'js',
+					collapsed: false,
+					items: [
+						{ text: '防抖和节流', link: '/summary/js/No1' },
+						{ text: 'for...in 和 for...of 的区别', link: '/summary/js/No2' },
+						{ text: '手写实现 call() apply() bind()函数', link: '/summary/js/No3' },
+						{ text: 'new 的过程', link: '/summary/js/No4' },
+					],
+				},
+				{
+					text: '其他',
+					collapsed: false,
+					items: [{ text: '阿里云服务器搭建宝塔面板', link: '/summary/other/No1' }],
 				},
 			],
 			'/live/': [
