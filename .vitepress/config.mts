@@ -337,6 +337,11 @@ export default defineConfig({
 					],
 				},
 				{
+					text: '浏览器',
+					collapsed: false,
+					items: [{ text: 'sessionStorage 能在多个标签页之间共享数据吗？', link: '/summary/browser/No1' }],
+				},
+				{
 					text: '其他',
 					collapsed: false,
 					items: [
