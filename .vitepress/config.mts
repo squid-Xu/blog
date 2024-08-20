@@ -171,7 +171,10 @@ export default defineConfig({
 				{
 					text: '实践',
 					collapsed: false,
-					items: [{ text: '1. 索引签名', link: '/typescript/practice/No1' }],
+					items: [
+						{ text: '1. 索引签名', link: '/typescript/practice/No1' },
+						{ text: '2. TS中泛型 Record＜string, any＞', link: '/typescript/practice/No2' },
+					],
 				},
 			],
 			'/vitepress/': [
