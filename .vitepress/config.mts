@@ -304,7 +304,10 @@ export default defineConfig({
 					items: [{ text: '1、Array 支持从尾部查找', link: '/ecmascript/es14/No1' }],
 				},
 			],
-			'/case/': [{ text: '家族图谱', link: '/case/No1' }],
+			'/case/': [
+				{ text: '家族图谱', link: '/case/No1' },
+				{ text: 'css实现围绕中心进行圆形旋转', link: '/case/No2' },
+			],
 			'/summary/': [
 				{
 					text: '微信小程序',

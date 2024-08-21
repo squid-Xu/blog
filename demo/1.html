@@ -4,18 +4,101 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>测试</title>
+		<style>
+			.circle {
+				margin: auto;
+				width: 500px;
+				height: 500px;
+				border: solid 1px red;
+				position: relative;
+			}
+			.circle-1 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: aquamarine;
+			}
+			.circle-2 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				border: solid 2px hotpink;
+				/* animation: spin 3s linear infinite; */
+			}
+			.ball {
+				transform: translateY(-50%);
+				margin: 0 auto;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: hotpink;
+			}
+			.circle-3 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				border: solid 2px khaki;
+				/* animation: spin 4s linear infinite; */
+			}
+			.circle-4 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 300px;
+				height: 300px;
+				border-radius: 50%;
+				border: solid 2px teal;
+				/* animation: spin 5s linear infinite; */
+			}
+			.circle-5 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 400px;
+				height: 400px;
+				border-radius: 50%;
+				border: solid 2px lawngreen;
+				/* animation: spin 6s linear infinite; */
+			}
+			@keyframes spin {
+				form {
+					transform: translate(-50%, -50%) rotate(0);
+				}
+				to {
+					transform: translate(-50%, -50%) rotate(360deg);
+				}
+			}
+		</style>
 	</head>
 	<body>
-		<script>
-			const arr = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
-
-			// find vs findLast
-			console.log(arr.find(n => n.value % 2 === 1)); // { value: 1 }
-			console.log(arr.findLast(n => n.value % 2 === 1)); // { value: 3 }
-
-			// findIndex vs findLastIndex
-			console.log(arr.findIndex(n => n.value % 2 === 1)); // 0
-			console.log(arr.findLastIndex(n => n.value % 2 === 1)); // 2
-		</script>
+		<div class="circle">
+			<div class="circle-1"></div>
+			<div class="circle-2">
+				<div class="ball"></div>
+			</div>
+			<div class="circle-3">
+				<div class="ball"></div>
+			</div>
+			<div class="circle-4">
+				<div class="ball"></div>
+			</div>
+			<div class="circle-5">
+				<div class="ball"></div>
+			</div>
+		</div>
 	</body>
 </html>
