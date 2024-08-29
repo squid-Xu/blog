@@ -350,6 +350,7 @@ export default defineConfig({
 					items: [
 						{ text: '阿里云服务器搭建宝塔面板', link: '/summary/other/No1' },
 						{ text: '前端包管理工具-npm、yarn与pnpm', link: '/summary/other/No2' },
+						{ text: 'elementPlus el-dropdown组件popperjs本地报警告', link: '/summary/other/No3' },
 					],
 				},
 			],
