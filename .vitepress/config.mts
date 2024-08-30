@@ -361,7 +361,10 @@ export default defineConfig({
 				{
 					text: '买房历程',
 					collapsed: false,
-					items: [{ text: '七月的第一天', link: '/live/house/No1' }],
+					items: [
+						{ text: '七月的第一天', link: '/live/house/No1' },
+						{ text: '八月的第一天', link: '/live/house/No2' },
+					],
 				},
 			],
 		},
