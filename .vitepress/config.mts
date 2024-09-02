@@ -348,6 +348,11 @@ export default defineConfig({
 					items: [{ text: 'sessionStorage 能在多个标签页之间共享数据吗？', link: '/summary/browser/No1' }],
 				},
 				{
+					text: 'git',
+					collapsed: false,
+					items: [{ text: 'git回滚和强制提交', link: '/summary/git/No1' }],
+				},
+				{
 					text: '其他',
 					collapsed: false,
 					items: [
