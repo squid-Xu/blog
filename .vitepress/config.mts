@@ -57,6 +57,10 @@ export default defineConfig({
 				link: '/ecmascript/basics/No1',
 			},
 			{
+				text: 'Axios',
+				link: '/axios/basics/No1',
+			},
+			{
 				text: '项目案例',
 				link: '/case/No1',
 			},
@@ -302,6 +306,16 @@ export default defineConfig({
 					text: 'ES14',
 					collapsed: false,
 					items: [{ text: '1、Array 支持从尾部查找', link: '/ecmascript/es14/No1' }],
+				},
+			],
+			'/axios/':[
+				{
+					text: '总结',
+					collapsed: false,
+					items: [
+						{ text: '1、axios封装', link: '/axios/basics/No1' },
+						{ text: '2、axios 是否可以取消请求', link: '/axios/basics/No2' },
+					],
 				},
 			],
 			'/case/': [
