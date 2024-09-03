@@ -367,12 +367,18 @@ export default defineConfig({
 					items: [{ text: 'git回滚和强制提交', link: '/summary/git/No1' }],
 				},
 				{
+					text: 'uni-app',
+					collapsed: false,
+					items: [{ text: 'uniapp x与uni-app的区别', link: '/summary/uni-app/No1' }],
+				},
+				{
 					text: '其他',
 					collapsed: false,
 					items: [
 						{ text: '阿里云服务器搭建宝塔面板', link: '/summary/other/No1' },
 						{ text: '前端包管理工具-npm、yarn与pnpm', link: '/summary/other/No2' },
 						{ text: 'elementPlus el-dropdown组件popperjs本地报警告', link: '/summary/other/No3' },
+						{ text: '混合APP开发技术选型', link: '/summary/other/No4' },
 					],
 				},
 			],
