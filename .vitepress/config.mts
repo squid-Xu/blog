@@ -308,7 +308,7 @@ export default defineConfig({
 					items: [{ text: '1、Array 支持从尾部查找', link: '/ecmascript/es14/No1' }],
 				},
 			],
-			'/axios/':[
+			'/axios/': [
 				{
 					text: '总结',
 					collapsed: false,
@@ -321,6 +321,7 @@ export default defineConfig({
 			'/case/': [
 				{ text: '家族图谱', link: '/case/No1' },
 				{ text: 'css实现围绕中心进行圆形旋转', link: '/case/No2' },
+				{ text: 'uni-app制作APP壳子', link: '/case/No3' },
 			],
 			'/summary/': [
 				{
