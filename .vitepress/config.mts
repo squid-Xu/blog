@@ -385,13 +385,18 @@ export default defineConfig({
 			],
 			'/live/': [
 				{
-					text: '买房历程',
-					collapsed: false,
+					text: '房奴',
+					collapsed: true,
 					items: [
 						{ text: '七月的第一天', link: '/live/house/No1' },
 						{ text: '八月的第一天', link: '/live/house/No2' },
 						{ text: '九月的第一天', link: '/live/house/No3' },
 					],
+				},
+				{
+					text: '码农',
+					collapsed: true,
+					items: [{ text: '第一个idea', link: '/live/dream/No1' }],
 				},
 			],
 		},
