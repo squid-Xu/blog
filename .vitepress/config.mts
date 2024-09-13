@@ -95,6 +95,7 @@ export default defineConfig({
 					items: [
 						{ text: '开放数据', link: '/nav/tool/No1' },
 						{ text: '免费资源', link: '/nav/tool/No2' },
+						{ text: 'Ai工具', link: '/nav/tool/No3' },
 					],
 				},
 				{
