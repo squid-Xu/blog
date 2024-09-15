@@ -102,3 +102,72 @@ export default defineConfig({
 	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
 }
 ```
+
+## unplugin 自动导入
+
+> 现有的组件库都可以按需导入了，像`Element Plus` 、`Vant`等
+
+- 为了避免在多个页面重复引入 API 或 组件，由此而产生的自动导入插件来节省重复代码和提高开发效率。
+
+| 插件        |      概念      |  自动导入对象 |
+| ------------- | :-----------: | ----: |
+| unplugin-auto-import | 按需自动导入API | ref，reactive,watch,computed 等API |
+| unplugin-vue-components | 按需自动导入组件 | Element Plus 等三方库和指定目录下的自定义组件 |
+
+- 看下自动导入插件未使用和使用的区别：
+
+
+| 插件名        |      	未使用自动导入      |  使用自动导入 |
+| ------------- | :-----------: | ----: |
+| unplugin-auto-import      | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.8ojnip7fho.webp) | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.esgujl8wo.webp) |
+| unplugin-vue-components    |   ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.4qra20z83y.webp)    |   ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.2vep9gsk80.webp) |
+
+##### 安装插件依赖
+
+```sh
+npm install -D unplugin-vue-components unplugin-auto-import
+```
+
+##### vite.config.ts - 自动导入配置
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// 引入path模块
+import path from 'path';
+
+import AutoImport from 'unplugin-auto-import/vite'; // [!code ++]
+import Components from 'unplugin-vue-components/vite'; // [!code ++]
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [
+		vue(),
+		AutoImport({ // [!code ++]
+			// 自动导入 Vue 相关函数，如：ref, reactive, toRef 等 // [!code ++]
+			imports: ['vue'], // [!code ++]
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径 // [!code ++]
+		}), // [!code ++]
+		Components({ // [!code ++]
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径 // [!code ++]
+		}), // [!code ++]
+	],
+	//路径别名
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
+	},
+});
+```
+
+##### 自动导入效果
+
+- 运行项目 `npm run dev` 自动
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.9rjctnu5wv.webp)
+
+
+## 整合 Element Plus
+## 整合 Vant
