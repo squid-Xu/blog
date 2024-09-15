@@ -323,6 +323,7 @@ export default defineConfig({
 				{ text: '家族图谱', link: '/case/No1' },
 				{ text: 'css实现围绕中心进行圆形旋转', link: '/case/No2' },
 				{ text: 'uni-app制作APP壳子', link: '/case/No3' },
+				{ text: 'Vue3+Vite+Ts搭建步骤', link: '/case/No4' },
 			],
 			'/summary/': [
 				{
