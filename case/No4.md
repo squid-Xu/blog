@@ -170,4 +170,30 @@ export default defineConfig({
 
 
 ## 整合 Element Plus
+
+- [element plus 按需自动导入](https://element-plus.org/zh-CN/guide/quickstart.html)
+
+##### 安装 Element Plus
+
+```sh
+npm install element-plus --save
+```
+
+##### 安装自动导入 Icon 依赖
+
+```sh
+npm install @element-plus/icons-vue
+```
+
+##### vite.config.ts 配置
+
+```ts
+```
+
+
+
+
+
+
+
 ## 整合 Vant
