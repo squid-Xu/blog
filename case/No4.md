@@ -945,3 +945,312 @@ export default defineConfig({
     }
 });
 ```
+
+## Git 提交规范
+
+###  配置husky+lint-staged
+
+- Husky + Lint-staged 整合实现 Git 提交前代码规范检测/格式化
+
+> husky 是一个 Git 钩子（Git hooks）工具，它可以在项目中植入你设定的 git hooks，在 git 提交代码的前后，你预设的 git hooks 可以得到执行，以对代码、文件等进行预设的检查，一旦检查不通过，就可以阻止当前的代码提交，避免了不规范的代码和 git 提交出现在项目中。
+
+> lint-staged 是一个专门用于在通过 git 提交代码之前，对暂存区的代码执行一系列的格式化。当 lint-staged 配合 git hooks 使用时，可以在 git 提交前的 hook 中加入 lint-staged 命令，这样就能在提交代码之前，对即将提交的代码进行格式化，成功之后就会提交代码。
+
+
+##### 安装 husky 
+
+- [官网](https://typicode.github.io/husky/zh/get-started.html)
+
+```sh
+npm install --save-dev husky
+```
+
+##### 使用 husky-init 命令一次性完成依赖自动安装和配置
+
+```sh
+npx husky init
+```
+
+- 自动生成的 .husky 目录和指令：
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.sywp91kyw.webp)
+
+
+##### 安装  Lint-staged
+
+
+- [官网](https://github.com/lint-staged/lint-staged)
+
+
+```sh
+npm install --save-dev lint-staged
+```
+##### Lint-staged 配置
+
+- package.json 中添加不同文件在 git 提交执行的 lint 检测配置
+
+```js
+"lint-staged": {
+    "*.{vue,ts,js}": [
+        "eslint --fix",
+        "prettier --write"
+    ],
+    "*.{js,ts,json,css,scss,vue,html,md}": [
+        "prettier --write"
+    ]
+},
+```
+
+
+##### 添加 lint-staged 指令
+
+- package.json 的 scripts 添加 lint-staged 指令
+
+```js
+"scripts": {
+  "lint:lint-staged": "lint-staged"
+}
+```
+
+##### 修改提交前钩子命令
+
+- 根目录 .husky 目录下 pre-commit 文件中的 npm test 修改为 npm run lint:lint-staged
+
+```js
+#npm test
+npm run lint:lint-staged
+```
+
+##### Git 提交代码检测
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.2yybb16omb.webp)
+
+
+###  配置Commitlint
+
+- Husky + Commitlint + Commitizen + cz-git 整合实现生成规范化且高度自定义的 Git commit message。
+
+
+##### Commitlint 安装
+
+- [官方安装文档](https://commitlint.js.org/guides/getting-started.html)
+
+```sh
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
+```
+
+##### Commitlint 配置
+
+- 根目录创建 commitlint.config.js 配置文件
+
+```js
+export default {
+    // 继承的规则
+    extends: ['@commitlint/config-conventional'],
+    // @see: https://commitlint.js.org/#/reference-rules
+    rules: {
+        'subject-case': [0], // subject大小写不做校验
+
+        // 类型枚举，git提交type必须是以下类型
+        'type-enum': [
+            2,
+            'always',
+            [
+                'feat', // 新增功能
+                'fix', // 修复缺陷
+                'docs', // 文档变更
+                'style', // 代码格式（不影响功能，例如空格、分号等格式修正）
+                'refactor', // 代码重构（不包括 bug 修复、功能新增）
+                'perf', // 性能优化
+                'test', // 添加疏漏测试或已有测试改动
+                'build', // 构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）
+                'ci', // 修改 CI 配置、脚本
+                'revert', // 回滚 commit
+                'chore' // 对构建过程或辅助工具和库的更改（不影响源文件、测试用例）
+            ]
+        ]
+    }
+};
+```
+
+##### 添加提交信息校验钩子
+
+- 执行下面命令生成 commint-msg 钩子用于 git 提交信息校验
+
+```sh
+echo "npx --no -- commitlint --edit \$1" > .husky/commit-msg
+```
+
+##### 生成的配置如下：
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.2yybb25mlz.webp)
+
+::: danger 提示
+- 我在git commit时，发生了以下错误：
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.70aaph79xx.webp)
+
+```js
+.husky/commit-msg: .husky/commit-msg: cannot execute binary file
+husky - commit-msg script failed (code 126)
+```
+- 解决办法：
+> 右下角文件编码那里，你的commit-msg默认是utf-16，改成utf-8就可以了。错误信息有告诉你无法执行binary文件，一般这种错误都跟编码有关
+:::
+
+##### Commitlint 验证
+
+- 正确的提交格式：`<type>(<scope>): <subject>` ，type 和 subject 默认必填
+
+| 不规范的 commit msg，提交失败        |      规范的 commit msg，提交成功      | 
+| ------------- | :-----------: |
+| ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.8ojnmny4va.webp)      | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.175cg6pd4n.webp) |
+
+
+### Commitizen & cz-git
+
+- [commitizen官方文档](https://github.com/commitizen/cz-cli)
+> commitizen: 基于Node.js的 git commit 命令行工具，辅助生成标准化规范化的 commit message
+
+- [cz-git官方文档](https://cz-git.qbb.sh/zh/)
+> cz-git: 一款工程性更强，轻量级，高度自定义，标准输出格式的 commitizen 适配器
+
+
+##### Commitizen & cz-git 安装
+
+```sh
+npm install -D commitizen cz-git
+```
+
+##### cz-git 配置
+
+- 修改 package.json 指定使用的适配器
+
+```js
+"config": {
+  "commitizen": {
+    "path": "node_modules/cz-git"
+  }
+}
+```
+
+##### cz-git 与 commitlint 进行联动给予校验信息
+
+```js
+export default {
+    // 继承的规则
+    extends: ['@commitlint/config-conventional'],
+    // @see: https://commitlint.js.org/#/reference-rules
+    rules: {
+        'subject-case': [0], // subject大小写不做校验
+
+        // 类型枚举，git提交type必须是以下类型
+        'type-enum': [
+            2,
+            'always',
+            [
+                'feat', // 新增功能
+                'fix', // 修复缺陷
+                'docs', // 文档变更
+                'style', // 代码格式（不影响功能，例如空格、分号等格式修正）
+                'refactor', // 代码重构（不包括 bug 修复、功能新增）
+                'perf', // 性能优化
+                'test', // 添加疏漏测试或已有测试改动
+                'build', // 构建流程、外部依赖变更（如升级 npm 包、修改 webpack 配置等）
+                'ci', // 修改 CI 配置、脚本
+                'revert', // 回滚 commit
+                'chore' // 对构建过程或辅助工具和库的更改（不影响源文件、测试用例）
+            ]
+        ]
+    },
+    // 以下为新增内容
+    prompt: {
+        messages: {
+            type: '选择你要提交的类型 :',
+            scope: '选择一个提交范围（可选）:',
+            customScope: '请输入自定义的提交范围 :',
+            subject: '填写简短精炼的变更描述 :\n',
+            body: '填写更加详细的变更描述（可选）。使用 "|" 换行 :\n',
+            breaking: '列举非兼容性重大的变更（可选）。使用 "|" 换行 :\n',
+            footerPrefixesSelect: '选择关联issue前缀（可选）:',
+            customFooterPrefix: '输入自定义issue前缀 :',
+            footer: '列举关联issue (可选) 例如: #31, #I3244 :\n',
+            generatingByAI: '正在通过 AI 生成你的提交简短描述...',
+            generatedSelectByAI: '选择一个 AI 生成的简短描述:',
+            confirmCommit: '是否提交或修改commit ?'
+        },
+        // prettier-ignore
+        types: [
+        { value: "feat",     name: "特性:     ✨  新增功能", emoji: ":sparkles:" },
+        { value: "fix",      name: "修复:     🐛  修复缺陷", emoji: ":bug:" },
+        { value: "docs",     name: "文档:     📝  文档变更", emoji: ":memo:" },
+        { value: "style",    name: "格式:     💄  代码格式（不影响功能，例如空格、分号等格式修正）", emoji: ":lipstick:" },
+        { value: "refactor", name: "重构:     ♻️  代码重构（不包括 bug 修复、功能新增）", emoji: ":recycle:" },
+        { value: "perf",     name: "性能:     ⚡️  性能优化", emoji: ":zap:" },
+        { value: "test",     name: "测试:     ✅  添加疏漏测试或已有测试改动", emoji: ":white_check_mark:"},
+        { value: "build",    name: "构建:     📦️  构建流程、外部依赖变更（如升级 npm 包、修改 vite 配置等）", emoji: ":package:"},
+        { value: "ci",       name: "集成:     🎡  修改 CI 配置、脚本",  emoji: ":ferris_wheel:"},
+        { value: "revert",   name: "回退:     ⏪️  回滚 commit",emoji: ":rewind:"},
+        { value: "chore",    name: "其他:     🔨  对构建过程或辅助工具和库的更改（不影响源文件、测试用例）", emoji: ":hammer:"},
+      ],
+        useEmoji: true,
+        emojiAlign: 'center',
+        useAI: false,
+        aiNumber: 1,
+        themeColorCode: '',
+        scopes: [],
+        allowCustomScopes: true,
+        allowEmptyScopes: true,
+        customScopesAlign: 'bottom',
+        customScopesAlias: 'custom',
+        emptyScopesAlias: 'empty',
+        upperCaseSubject: false,
+        markBreakingChangeMode: false,
+        allowBreakingChanges: ['feat', 'fix'],
+        breaklineNumber: 100,
+        breaklineChar: '|',
+        skipQuestions: [],
+        issuePrefixes: [{ value: 'closed', name: 'closed:   ISSUES has been processed' }],
+        customIssuePrefixAlign: 'top',
+        emptyIssuePrefixAlias: 'skip',
+        customIssuePrefixAlias: 'custom',
+        allowCustomIssuePrefix: true,
+        allowEmptyIssuePrefix: true,
+        confirmColorize: true,
+        maxHeaderLength: Infinity,
+        maxSubjectLength: Infinity,
+        minSubjectLength: 0,
+        scopeOverrides: undefined,
+        defaultBody: '',
+        defaultIssues: '',
+        defaultScope: '',
+        defaultSubject: ''
+    }
+};
+```
+
+##### 添加提交指令
+
+- package.json 添加 commit 指令
+
+```js
+"scripts": {
+    "commit": "git-cz"
+}
+```
+
+##### cz-git 验证
+
+- 执行 commit 指令进行代码提交流程，执行前需将改动的文件通过 git add 添加到暂存区
+
+```sh
+npm run commit
+```
+
+- 执行命令之后会出现询问交互
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.6f0n3776uz.webp)
+
+- 根据提示一步步的完善 commit msg 信息
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.175cg834fa.webp)
