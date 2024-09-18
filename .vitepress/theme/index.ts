@@ -7,8 +7,6 @@ import './index.css';
 
 //评论
 import Comment from './components/comment.vue';
-//页面锁
-import LockedPage from './components/LockedPage.vue';
 //导航布局
 import NavMenu from './components/NavMenu.vue';
 
@@ -30,7 +28,6 @@ export default {
 	enhanceApp({ app }) {
 		// 注册全局组件，如果你不想使用也可以不添加
 		app.component('vImageViewer', vImageViewer);
-		app.component('LockedPage', LockedPage);
 		app.component('NavMenu', NavMenu);
 	},
 	setup() {

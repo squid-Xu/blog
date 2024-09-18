@@ -40,7 +40,7 @@ npm create vite@latest vue3-vite-demo -- --template vue-ts
 
 ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240915/image.9kg4xiw82h.webp)
 
-- 浏览器访问 http://localhost:5173/ 预览
+- 浏览器访问 `http://localhost:5173/` 预览
 
 ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240915/image.361j1xfylk.webp)
 
