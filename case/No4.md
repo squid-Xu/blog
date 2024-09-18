@@ -179,21 +179,245 @@ export default defineConfig({
 npm install element-plus --save
 ```
 
+##### vite.config.ts 配置
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// 引入path模块
+import path from 'path';
+
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';// [!code ++]
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [
+		vue(),
+		AutoImport({
+			// 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+			imports: ['vue'],
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
+			resolvers: [ElementPlusResolver()],// [!code ++]
+		}),
+		Components({
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径,
+			resolvers: [ElementPlusResolver()],// [!code ++]
+		}),
+	],
+	//路径别名
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
+	},
+});
+
+```
+
 ##### 安装自动导入 Icon 依赖
 
 ```sh
-npm install @element-plus/icons-vue
+npm install @element-plus/icons-vue 
+npm i -D unplugin-icons
+npm i -D unplugin-auto-import
 ```
 
 ##### vite.config.ts 配置
 
 ```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// 引入path模块
+import path from 'path';
+
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+//  ElementPlus的Icon自动导入 // [!code ++]
+import Icons from 'unplugin-icons/vite'; // [!code ++]
+import IconsResolver from 'unplugin-icons/resolver'; // [!code ++]
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [
+		vue(),
+		AutoImport({
+			// 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+			imports: ['vue'],
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
+			resolvers: [
+				// 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+				ElementPlusResolver(),
+			],
+		}),
+		Components({
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径,
+			resolvers: [
+				ElementPlusResolver(),
+				// 自动注册图标组件
+				IconsResolver({ // [!code ++]
+					// 修改Icon组件前缀，prefix不设置则默认为i,禁用则设置为false // [!code ++]
+					// prefix: 'i', // [!code ++]
+					// 指定collection，即指定为elementplus图标集ep // [!code ++]
+					enabledCollections: ['ep'], // [!code ++]
+				}),
+			],
+		}),
+		// Icons图标自动下载 // [!code ++]
+		Icons({ // [!code ++]
+			autoInstall: true, // [!code ++]
+		}),// [!code ++]
+	],
+	//路径别名
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
+	},
+});
 ```
 
 
 
-
-
-
-
 ## 整合 Vant
+
+
+- [vant 按需自动导入](https://vant.pro/vant/#/zh-CN/quickstart)
+
+##### 安装最新版 Vant
+
+```sh
+npm i vant
+```
+##### 按需引入组件样式
+
+```sh
+npm i @vant/auto-import-resolver unplugin-vue-components unplugin-auto-import -D
+```
+
+##### vite.config.ts 配置
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// 引入path模块
+import path from 'path';
+
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+//  ElementPlus的Icon自动导入
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+
+import { VantResolver } from '@vant/auto-import-resolver'; // [!code ++]
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [
+		vue(),
+		AutoImport({
+			// 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+			imports: ['vue'],
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
+			resolvers: [
+				// 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+				ElementPlusResolver(),
+				// 自动导入vant // [!code ++]
+				VantResolver(), // [!code ++]
+			],
+		}),
+		Components({
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径,
+			resolvers: [
+				ElementPlusResolver(),
+				// 自动注册图标组件
+				IconsResolver({
+					// 修改Icon组件前缀，prefix不设置则默认为i,禁用则设置为false
+					// prefix: 'i',
+					// 指定collection，即指定为elementplus图标集ep
+					enabledCollections: ['ep'],
+				}),
+				// 自动注册vant // [!code ++]
+				VantResolver(), // [!code ++]
+			],
+		}),
+		// Icons图标自动下载
+		Icons({
+			autoInstall: true,
+		}),
+	],
+	//路径别名
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
+	},
+});
+
+```
+
+
+##### 浏览器适配
+
+- [Viewport 布局](https://vant.pro/vant/#/zh-CN/advanced-usage#viewport-bu-ju)
+
+##### 安装插件
+
+```sh
+// postcss-px-to-viewport 是一款 PostCSS 插件，用于将 px 单位转化为 vw/vh 单位。
+npm install postcss-px-to-viewport --save-dev
+```
+
+- 创建portcss.config.js文件，和package.json平级
+
+```js
+// postcss.config.js
+export default {
+    plugins: {
+      'postcss-px-to-viewport': {
+        viewportWidth: 750, // 设计稿宽度
+        exclude: [/node_modules\/vant/] // 这里排除对vant的转换
+      },
+    },
+};
+```
+
+- [Rem 布局适配](https://vant.pro/vant/#/zh-CN/advanced-usage#rem-bu-ju-gua-pei)
+
+##### 安装插件
+
+```sh
+npm install postcss postcss-pxtorem --save-dev
+npm i -S amfe-flexible
+```
+
+#####  main.ts
+
+```ts
+// rem布局
+import 'amfe-flexible';
+```
+
+
+- 创建portcss.config.js文件，和package.json平级
+
+```js
+// postcss.config.js
+export default{
+  plugins: {
+    // postcss-pxtorem 插件的版本需要 >= 5.0.0
+    'postcss-pxtorem': {
+      rootValue({ file }) {
+        return file.indexOf('vant') !== -1 ? 37.5 : 75;
+      },
+      propList: ['*'],
+    },
+  },
+};
+```
