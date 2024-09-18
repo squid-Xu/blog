@@ -281,6 +281,18 @@ export default defineConfig({
 });
 ```
 
+##### icon 用法
+
+
+```html
+<div>
+  <el-button type="success"><i-ep-SuccessFilled />Success</el-button>
+  <el-button type="info"><i-ep-InfoFilled />Info</el-button>
+  <el-button type="warning"><i-ep-WarningFilled />Warning</el-button>
+  <el-button type="danger"><i-ep-WarnTriangleFilled />Danger</el-button>
+</div>
+```
+
 
 
 ## 整合 Vant
@@ -420,4 +432,516 @@ export default{
     },
   },
 };
+```
+
+## 整合 SVG 图标
+
+> 通过[vite-plugin-svg-icons](https://github.com/vbenjs/vite-plugin-svg-icons) 插件整合 Iconfont 第三方图标库实现本地图标
+
+- [ vite-plugin-svg-icons 安装文档](https://github.com/vbenjs/vite-plugin-svg-icons/blob/main/README.zh_CN.md)
+
+##### 安装插件
+
+```sh
+npm install fast-glob
+npm i vite-plugin-svg-icons -D
+```
+
+##### 创建 src/assets/icons 目录 , 放入从 Iconfont 复制的 svg 图标
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.9gwj41pgxo.png)
+
+
+##### 在 src/main.ts 内引入注册脚本
+
+```sh
+import 'virtual:svg-icons-register'
+```
+
+##### SVG 组件封装
+
+```html
+<!-- src/components/SvgIcon/index.vue -->
+<script setup lang="ts">
+const props = defineProps({
+  prefix: {
+    type: String,
+    default: "icon",
+  },
+  iconClass: {
+    type: String,
+    required: false,
+  },
+  color: {
+    type: String,
+  },
+  size: {
+    type: String,
+    default: "1em",
+  },
+});
+
+const symbolId = computed(() => `#${props.prefix}-${props.iconClass}`);
+</script>
+
+<template>
+  <svg
+    aria-hidden="true"
+    class="svg-icon"
+    :style="'width:' + size + ';height:' + size"
+  >
+    <use :xlink:href="symbolId" :fill="color" />
+  </svg>
+</template>
+
+<style scoped>
+.svg-icon {
+  display: inline-block;
+  outline: none;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em; /* 因icon大小被设置为和字体大小一致，而span等标签的下边缘会和字体的基线对齐，故需设置一个往下的偏移比例，来纠正视觉上的未对齐效果 */
+  fill: currentColor; /* 定义元素的颜色，currentColor是一个变量，这个变量的值就表示当前元素的color值，如果当前元素未设置color值，则从父元素继承 */
+  overflow: hidden;
+}
+</style>
+```
+
+##### vite.config.ts 配置插件
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// 引入path模块
+import path from 'path';
+
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+//  ElementPlus的Icon自动导入
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+
+import { VantResolver } from '@vant/auto-import-resolver';
+
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'; // [!code ++]
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [
+		vue(),
+		AutoImport({
+			// 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+			imports: ['vue'],
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
+			resolvers: [
+				// 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+				ElementPlusResolver(),
+				// 自动导入vant
+				VantResolver(),
+			],
+		}),
+		Components({
+			dts: path.resolve(path.resolve(__dirname, 'src'), 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径,
+			resolvers: [
+				ElementPlusResolver(),
+				// 自动注册图标组件
+				IconsResolver({
+					// 修改Icon组件前缀，prefix不设置则默认为i,禁用则设置为false
+					// prefix: 'i',
+					// 指定collection，即指定为elementplus图标集ep
+					enabledCollections: ['ep'],
+				}),
+				// 自动注册vant
+				VantResolver(),
+			],
+		}),
+		// Icons图标自动下载
+		Icons({
+			autoInstall: true,
+		}),
+		//用于生成 svg 雪碧图. // [!code ++]
+		createSvgIconsPlugin({ // [!code ++]
+			// 指定需要缓存的图标文件夹 // [!code ++]
+			iconDirs: [path.resolve(__dirname, 'src/assets/icons')], // [!code ++]
+			// 指定symbolId格式 // [!code ++]
+			symbolId: 'icon-[dir]-[name]', // [!code ++]
+		}), // [!code ++]
+	],
+	//路径别名
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
+	},
+});
+```
+
+##### 组件使用
+
+```html
+<template>
+ <el-button type="info"><svg-icon icon-class="fullscreen" />SVG 本地图标</el-button>
+</template>
+```
+
+## 代码统一规范
+
+- Eslint： JavaScript 语法规则和代码风格检查；
+
+- Prettier：全局代码格式化。
+
+### 集成ESLint配置
+
+> 检测代码规范
+
+##### 安装 ESLint 依赖
+
+```sh
+npm i -D eslint
+```
+
+##### 初始化eslint
+
+```sh
+npx eslint --init
+```
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.8s39k1w2ms.webp)
+
+##### 根目录自动生成的 eslint.config.js 配置内容如下：
+
+```js
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+import pluginVue from "eslint-plugin-vue";
+
+
+export default [
+  {files: ["**/*.{js,mjs,cjs,ts,vue}"]},
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...pluginVue.configs["flat/essential"],
+  {files: ["**/*.vue"], languageOptions: {parserOptions: {parser: tseslint.parser}}},
+];
+```
+##### ESLint 检测指令
+
+> package.json 添加 eslint 检测指令
+
+```json
+"scripts": {
+	"lint:eslint": "eslint \"src/**/*.{vue,ts,js}\" --fix"
+}
+```
+
+##### vscode 安装 ESLint 插件
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.70aap643rr.webp)
+
+##### 执行 `npm run lint:eslint` 命令
+
+> 报错提示是格式问题
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.1vylzw4psz.webp)
+
+##### eslint 报错解决
+
+```ts
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+
+// 引入path模块
+import path from "path";
+
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+//  ElementPlus的Icon自动导入
+import Icons from "unplugin-icons/vite";
+import IconsResolver from "unplugin-icons/resolver";
+
+import { VantResolver } from "@vant/auto-import-resolver";
+
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [
+    vue(),
+    AutoImport({
+      // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+      imports: ["vue"],
+      // eslint 报错解决 // [!code ++]
+      eslintrc: {  // [!code ++]
+        enabled: true, // 是否自动生成 eslint 规则，建议生成之后设置 false，避免重复生成消耗 // [!code ++]
+      }, // [!code ++]
+      dts: path.resolve(path.resolve(__dirname, "src"), "auto-imports.d.ts"), // 指定自动导入函数TS类型声明文件路径
+      resolvers: [
+        // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+        ElementPlusResolver(),
+        // 自动导入vant
+        VantResolver(),
+      ],
+    }),
+    Components({
+      dts: path.resolve(path.resolve(__dirname, "src"), "components.d.ts"), // 指定自动导入组件TS类型声明文件路径,
+      resolvers: [
+        ElementPlusResolver(),
+        // 自动注册图标组件
+        IconsResolver({
+          // 修改Icon组件前缀，prefix不设置则默认为i,禁用则设置为false
+          // prefix: 'i',
+          // 指定collection，即指定为elementplus图标集ep
+          enabledCollections: ["ep"],
+        }),
+        // 自动注册vant
+        VantResolver(),
+      ],
+    }),
+    // Icons图标自动下载
+    Icons({
+      autoInstall: true,
+    }),
+    //用于生成 svg 雪碧图.
+    createSvgIconsPlugin({
+      // 指定需要缓存的图标文件夹
+      iconDirs: [path.resolve(__dirname, "src/assets/icons")],
+      // 指定symbolId格式
+      symbolId: "icon-[dir]-[name]",
+    }),
+  ],
+  //路径别名
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
+});
+```
+
+##### 运行项目，根目录会多一个`eslintrc-auto-import.json`文件
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.3uusqcfndi.webp)
+
+##### eslint.config.js  配置规则
+
+```js
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
+
+import { readFile } from 'node:fs/promises';
+/**
+ * 由于安装了autoimport 插件，所以，需要引入.eslintrc-auto-import.json 来完善eslint以免不必要的报错
+ * 如果没有使用autoimport ，就不需要引入了
+ * @description:
+ * @return {*}
+ */
+const autoImportFile = new URL('./.eslintrc-auto-import.json', import.meta.url);
+const autoImportGlobals = JSON.parse(await readFile(autoImportFile, 'utf8'));
+
+export default [
+    { files: ['**/*.{js,mjs,cjs,ts,vue}'] },
+    {
+        languageOptions: {
+            globals: { ...globals.browser, ...autoImportGlobals.globals }
+        }
+    },
+    pluginJs.configs.recommended,
+    ...tseslint.configs.recommended,
+    ...pluginVue.configs['flat/essential'],
+    {
+        files: ['**/*.vue'],
+        languageOptions: { parserOptions: { parser: tseslint.parser } }
+    },
+    //添加自定义规则
+    {
+        rules: {
+            // eslint（https://eslint.bootcss.com/docs/rules/）
+            // 'no-var': 'off', // 要求使用 let 或 const 而不是 var
+            // 'no-multiple-empty-lines': ['off', { max: 1 }], // 不允许多个空行
+            // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+            // 'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+            // 'no-unexpected-multiline': 'off', // 禁止空余的多行
+            'no-useless-escape': 'off', // 禁止不必要的转义字符
+            // 'prefer-const': 'off', // 关闭没有使用const的报错
+
+            // typeScript (https://typescript-eslint.io/rules)
+            // '@typescript-eslint/no-unused-vars': 'off', // 禁止定义未使用的变量
+            // '@typescript-eslint/no-multiple-empty-lines': 'off', // 禁止定义未使用的变量
+            // '@typescript-eslint/no-var': 'off', // 禁止定义未使用的变量
+            // '@typescript-eslint/prefer-ts-expect-error': 'error', // 禁止使用 @ts-ignore
+            // '@typescript-eslint/prefer-const': 'off', // 关闭没有使用const的报错
+            '@typescript-eslint/no-explicit-any': 'off', // 禁止使用 any 类型
+            '@typescript-eslint/no-unused-expressions': 'off', // 禁止表达式调用函数
+            // '@typescript-eslint/no-non-null-assertion': 'off',
+            // '@typescript-eslint/no-namespace': 'off', // 禁止使用自定义 TypeScript 模块和命名空间。
+            // '@typescript-eslint/semi': 'off',
+            // eslint-plugin-vue (https://eslint.vuejs.org/rules/)
+            'vue/multi-word-component-names': 'off' // 要求组件名称始终为 “-” 链接的单词
+            // 'vue/script-setup-uses-vars': 'off', // 防止<script setup>使用的变量<template>被标记为未使用
+            // 'vue/no-mutating-props': 'off', // 不允许组件 prop的改变
+            // 'vue/attribute-hyphenation': 'off', // 对模板中的自定义组件强制执行属性命名样式
+        }
+    }
+];
+```
+
+##### 再次运行 pm run lint:eslint 命令
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.2yybawbcnj.webp)
+
+### 集成Prettier配置
+
+> 修复代码格式
+
+##### 安装Prettier
+
+```sh
+npm i prettier -D
+```
+
+##### VScode  安装 Prettier 插件
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.1hs691gmu1.webp)
+
+##### 创建并配置.prettierrc.js配置文件
+
+```js
+// @see: https://www.prettier.cn
+//此处的规则供参考，其中多半其实都是默认值，可以根据个人习惯改写
+export default {
+    printWidth: 160, // 单行输出（不折行）的（最大）长度
+    tabWidth: 4, // 每个缩进级别的空格数
+    semi: true, // 是否在语句末尾打印分号
+    singleQuote: true, // 是否使用单引号
+    quoteProps: 'as-needed', // 仅在需要时在对象属性周围添加引号
+    bracketSpacing: true, // 是否在对象属性添加空格
+    htmlWhitespaceSensitivity: 'ignore', // 指定 HTML 文件的全局空白区域敏感度, "ignore" - 空格被认为是不敏感的
+    trailingComma: 'none', // 去除对象最末尾元素跟随的逗号
+    useTabs: false, // 不使用缩进符，而使用空格
+    jsxSingleQuote: false, // jsx 不使用单引号，而使用双引号
+    // arrowParens: 'always', // 箭头函数，只有一个参数的时候，也需要括号
+    rangeStart: 0, // 每个文件格式化的范围是文件的全部内容
+    proseWrap: 'always', // 当超出print width（上面有这个参数）时就折行
+    endOfLine: 'lf', // 换行符使用 lf
+};
+```
+
+##### package.json 添加 prettier 格式化指令
+
+```json
+"scripts": {
+	"lint:prettier": "prettier --write \"**/*.{js,ts,json,css,less,scss,vue,html,md}\""
+}
+```
+
+##### 执行 `npm run lint:prettier` 命令
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.6bh156dkmo.webp)
+
+
+##### 配置VScode保存时自动格式化代码
+
+
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20240918/image.6t72trjpai.webp)
+
+
+### 配置vite运行的时候自动检测eslint规范
+
+> vite运行的时候默认是不会自动检测eslint规范的，而执行npm run lint命令时却可以看到有eslint的警告信息。
+
+> 如果想要vite运行的时候自动检测eslint规范，只需要安装vite-plugin-eslint依赖和添加相关配置即可。
+
+##### 安装vite-plugin-eslint
+
+```sh
+npm install vite-plugin-eslint -D
+```
+
+##### 配置 vite.config.ts文件
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+// 引入path模块
+import path from 'path';
+
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+//  ElementPlus的Icon自动导入
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+
+import { VantResolver } from '@vant/auto-import-resolver';
+
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+
+// vite加入编译eslint错误提示 // [!code ++]
+import eslintPlugin from 'vite-plugin-eslint'; // [!code ++]
+
+// https://vitejs.dev/config/
+export default defineConfig({
+    plugins: [
+        vue(),
+         // 配置vite在运行的时候自动检测eslint规范 // [!code ++]
+        eslintPlugin({ // [!code ++]
+            cache: false, // 不缓存结果，每次都检查 // [!code ++]
+            include: ['src/**/*.ts', 'src/**/*.js', 'src/**/*.vue', 'src/*.ts', 'src/*.js', 'src/*.vue'] // [!code ++]
+        }), // [!code ++]
+        AutoImport({
+            // 自动导入 Vue 相关函数，如：ref, reactive, toRef 等
+            imports: ['vue'],
+            // eslint 报错解决
+            eslintrc: {
+                enabled: false // 是否自动生成 eslint 规则，建议生成之后设置 false，避免重复生成消耗
+            },
+            dts: path.resolve(path.resolve(__dirname, 'src'), 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路径
+            resolvers: [
+                // 自动导入 Element Plus 相关函数，如：ElMessage, ElMessageBox... (带样式)
+                ElementPlusResolver(),
+                // 自动导入vant
+                VantResolver()
+            ]
+        }),
+        Components({
+            dts: path.resolve(path.resolve(__dirname, 'src'), 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径,
+            resolvers: [
+                ElementPlusResolver(),
+                // 自动注册图标组件
+                IconsResolver({
+                    // 修改Icon组件前缀，prefix不设置则默认为i,禁用则设置为false
+                    // prefix: 'i',
+                    // 指定collection，即指定为elementplus图标集ep
+                    enabledCollections: ['ep']
+                }),
+                // 自动注册vant
+                VantResolver()
+            ]
+        }),
+        // Icons图标自动下载
+        Icons({
+            autoInstall: true
+        }),
+        //用于生成 svg 雪碧图.
+        createSvgIconsPlugin({
+            // 指定需要缓存的图标文件夹
+            iconDirs: [path.resolve(__dirname, 'src/assets/icons')],
+            // 指定symbolId格式
+            symbolId: 'icon-[dir]-[name]'
+        })
+    ],
+    //路径别名
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
+    }
+});
 ```
