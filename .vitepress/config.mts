@@ -362,7 +362,10 @@ export default defineConfig({
 				{
 					text: '浏览器',
 					collapsed: false,
-					items: [{ text: 'sessionStorage 能在多个标签页之间共享数据吗？', link: '/summary/browser/No1' }],
+					items: [
+						{ text: 'sessionStorage 能在多个标签页之间共享数据吗？', link: '/summary/browser/No1' },
+						{ text: '网页端自动播放语音', link: '/summary/browser/No2' },
+					],
 				},
 				{
 					text: 'git',
