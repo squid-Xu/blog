@@ -28,14 +28,10 @@ export default defineConfig({
 			// 	text: 'CSS',
 			// 	link: '/css/',
 			// },
-			// {
-			// 	text: 'Vue2',
-			// 	link: '/vue2/',
-			// },
-			// {
-			// 	text: 'Vue3',
-			// 	link: '/vue3/',
-			// },
+			{
+				text: 'Vue',
+				link: '/vue/basics/No1',
+			},
 			// {
 			// 	text: 'React',
 			// 	link: '/react/',
@@ -72,10 +68,6 @@ export default defineConfig({
 				text: '生活',
 				link: '/live/house/No1',
 			},
-			// {
-			// 	text: '工作',
-			// 	link: '/work/No1',
-			// },
 		],
 		// 定义侧边栏
 		sidebar: {
@@ -130,6 +122,26 @@ export default defineConfig({
 						{ text: '9. 强制类型转换', link: '/javascript/basics/No9' },
 						{ text: '10. 其他进制的数据', link: '/javascript/basics/No10' },
 						{ text: '11. 算数运算符', link: '/javascript/basics/No11' },
+					],
+				},
+			],
+			'/vue/': [
+				{
+					text: '基础',
+					collapsed: false,
+					items: [
+						{ text: '1. 说一下Vue的生命周期', link: '/vue/basics/No1' },
+						{ text: '2. 说一下Vue的响应式原理', link: '/vue/basics/No2' },
+						{ text: '3. 说一下Vue2和Vue3的区别', link: '/vue/basics/No3' },
+						{ text: '4. 介绍一下nextTick', link: '/vue/basics/No4' },
+						{ text: '5. Vue中怎么异步加载组件', link: '/vue/basics/No5' },
+						{ text: '6. vue-router用过哪些路由模式？', link: '/vue/basics/No6' },
+						{ text: '7. Vue3中ref和reactive的区别？', link: '/vue/basics/No7' },
+						{ text: '8. SPA怎么优化首页白屏时间？', link: '/vue/basics/No8' },
+						{ text: '9. Vue3中toRef和toRefs的区别', link: '/vue/basics/No9' },
+						{ text: '10. 说一下Vue3声明一个响应式数据的方式？', link: '/vue/basics/No10' },
+						{ text: '11. 说一下watch和watchEffect?', link: '/vue/basics/No11' },
+						{ text: '12. 说一下Vue3中的宏有哪些?', link: '/vue/basics/No12' },
 					],
 				},
 			],
