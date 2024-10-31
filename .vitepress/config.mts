@@ -408,6 +408,8 @@ export default defineConfig({
 						{ text: '七月的第一天', link: '/live/house/No1' },
 						{ text: '八月的第一天', link: '/live/house/No2' },
 						{ text: '九月的第一天', link: '/live/house/No3' },
+						{ text: '十月的第一天', link: '/live/house/No4' },
+						{ text: '十一月的第一天', link: '/live/house/No5' },
 					],
 				},
 				{

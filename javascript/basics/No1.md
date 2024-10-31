@@ -61,7 +61,7 @@
 
 -   一个完整的 JavaScript 实现应由一下三部分构成
 
-![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.8s372o6kk2.webp)
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20241031/image.8s372o6kk2.3d4srbjxdc.jpg)
 
 ## 特点
 

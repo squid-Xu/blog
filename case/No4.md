@@ -119,8 +119,8 @@ export default defineConfig({
 
 | 插件名        |      	未使用自动导入      |  使用自动导入 |
 | ------------- | :-----------: | ----: |
-| unplugin-auto-import      | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.8ojnip7fho.webp) | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.esgujl8wo.webp) |
-| unplugin-vue-components    |   ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.4qra20z83y.webp)    |   ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.2vep9gsk80.webp) |
+| unplugin-auto-import      | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20241031/image.8s372o6kk2.4ckw4hrde0.jpg) | ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20241031/image.8s372o6kk2.7sn7wl1pu6.jpg) |
+| unplugin-vue-components    |   ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20241031/image.8s372o6kk2.2a53gfs5qf.jpg)   |   ![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20241031/image.2vep9gsk80.9nzsp7bw1m.jpg) |
 
 ##### 安装插件依赖
 
@@ -166,7 +166,7 @@ export default defineConfig({
 
 - 运行项目 `npm run dev` 自动
 
-![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/image.9rjctnu5wv.webp)
+![image](https://github.com/squid-Xu/picx-images-hosting/raw/master/20241031/image.8s372o6kk2.7lk015gbk3.jpg)
 
 
 ## 整合 Element Plus
