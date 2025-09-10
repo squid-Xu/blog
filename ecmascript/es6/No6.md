@@ -21,7 +21,7 @@ let getName2 = () => {
 
 window.name = 'squid-Xu';
 const obj = {
-    name: '麻辣鱿鱼徐',
+    name: '你笑个球',
 };
 
 // 直接调用
@@ -30,7 +30,7 @@ getName2(); //squid-Xu
 
 // call 方法调用
 
-getName.call(obj); //麻辣鱿鱼徐
+getName.call(obj); //你笑个球
 getName2.call(obj); //squid-Xu
 ```
 

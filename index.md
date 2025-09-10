@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-    name: 麻辣鱿鱼徐
+    name: 你笑个球
     text:
     tagline: 没啥特点仅供学习
     image:

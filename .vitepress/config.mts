@@ -5,9 +5,9 @@ export default defineConfig({
 	// 应用级配置选项
 	lang: 'zh-CN',
 	base: '/blog/',
-	title: '麻辣鱿鱼徐',
+	title: '你笑个球',
 	head: [['link', { rel: 'icon', href: '/blog/favicon.ico' }]],
-	description: '麻辣鱿鱼徐 | 个人博客',
+	description: '你笑个球 | 个人博客',
 	themeConfig: {
 		logo: '/logo.gif',
 		// https://vitepress.dev/reference/default-theme-config
